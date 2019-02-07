@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Android | Joe的博客</title>
+  <title>一文读懂Scroller | Joe的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
-<meta name="keywords" content="Android,kotlin,java,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joe的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Android/index.html">
+  <meta name="keywords" content="自定义View,基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一文读懂Scroller">
+<meta property="og:url" content="http://yoursite.com/2018/01/13/2019-01-13-一文读懂Scroller/index.html">
 <meta property="og:site_name" content="Joe的博客">
-<meta property="og:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://plew0vk60.bkt.clouddn.com//blog/190113%E5%AE%89%E5%8D%93%E6%9C%BA%E5%99%A8%E4%BA%BA.jpg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-44e74edce7f212fb.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-924b78ce2d52485c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-06T13:24:51.260Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Joe的博客">
-<meta name="twitter:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta name="twitter:title" content="一文读懂Scroller">
+<meta name="twitter:image" content="http://plew0vk60.bkt.clouddn.com//blog/190113%E5%AE%89%E5%8D%93%E6%9C%BA%E5%99%A8%E4%BA%BA.jpg">
   
   
     <link rel="icon" href="/assets/img/favicon.ico">
@@ -160,116 +162,195 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2019-01-13-一文读懂Scroller" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/" class="archive-article-date">
-  	<time datetime="2019-01-20T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/">仿掌阅实现书籍打开动画</a>
+    <h1 class="article-title" itemprop="name">
+      一文读懂Scroller
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/01/13/2019-01-13-一文读懂Scroller/" class="archive-article-date">
+  	<time datetime="2018-01-13T01:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://plew0vk60.bkt.clouddn.com//blog/190113%E5%AE%89%E5%8D%93%E6%9C%BA%E5%99%A8%E4%BA%BA.jpg" alt="2018年学习的知识.png"></p>
+<a id="more"></a>
+<h2 id="1-前言："><a href="#1-前言：" class="headerlink" title="1.前言："></a>1.前言：</h2><p>如果你要在自定义View中添加滑动效果，那么使用Scroller可能是一个不错的选择，今天我们就来介绍一下Scroller。</p>
+<h2 id="2-简单使用"><a href="#2-简单使用" class="headerlink" title="2.简单使用"></a>2.简单使用</h2><p>先看一下实现的效果图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9271486-44e74edce7f212fb.gif?imageMogr2/auto-orient/strip" alt="动图.gif"></p>
+<p>Scroller的使用方式很简单，在使用之前，如果对<code>View.scrollTo(int x, int y)</code>方法不了解<strong>（这里有必要申明一下，<code>View.scrollTo(int x, int y)</code>不是静态方法，之所以加上<code>View.</code>是为了和下面<code>Scroller</code>中的方法区分下来，下面如非特殊申明，都是该类下的普通方法）</strong>，建议先看一下<a href="https://www.jianshu.com/p/d44ec70aedb8" target="_blank" rel="noopener">View.scrollTo(int x, int y)</a>，如下则是我们的使用介绍：</p>
+<ol>
+<li>先创建一个自定义View类</li>
+<li>然后继承View</li>
+<li>创建一个方法，调用<code>Scroller.startScroll(x,x,x,x);</code>(这边参数省略了)和重新绘制方法<code>View.invalidate()</code></li>
+<li>在<code>View.computeScroll()</code>不断进行判断是否完成绘制，如果没有完成，还需调用滚动方法<code>View.scrollTo(int x, int y)</code>和重新绘制方法<code>View.invalidate()</code></li>
+</ol>
+<p>最后我们还是来看一下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScrollerView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Bitmap mBitmap;</span><br><span class="line">    <span class="keyword">private</span> Paint mPaint;</span><br><span class="line">    <span class="keyword">private</span> Scroller mScroller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ScrollerView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(context,<span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ScrollerView</span><span class="params">(Context context, @Nullable AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line"></span><br><span class="line">        init(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.beauty);</span><br><span class="line">        mPaint = <span class="keyword">new</span> Paint();</span><br><span class="line">        mScroller = <span class="keyword">new</span> Scroller(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.draw(canvas);</span><br><span class="line"></span><br><span class="line">        canvas.drawBitmap(mBitmap,<span class="number">100</span>,<span class="number">100</span>,mPaint);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scroll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mScroller.startScroll(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,-<span class="number">400</span>,<span class="number">10000</span>);</span><br><span class="line">        invalidate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">computeScroll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.computeScroll();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(mScroller.computeScrollOffset())&#123;</span><br><span class="line">            scrollTo(mScroller.getCurrX(),mScroller.getCurrY());</span><br><span class="line">            <span class="comment">// 刷新绘制的界面</span></span><br><span class="line">            invalidate();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码还是很简单的。</p>
+<h2 id="3-从过程中分析源码"><a href="#3-从过程中分析源码" class="headerlink" title="3. 从过程中分析源码"></a>3. 从过程中分析源码</h2><p>为了更直观的学习Scroller的调用流程，我用流程图展现了出来，先看图：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-924b78ce2d52485c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="档案管理流程图.jpg"></p>
+<ol>
+<li><p>我们首先调用<code>Scroller.startScroll(int startX, int startY, int dx, int dy, int duration)</code>方法，其实这个方法里面只是简单的传了一下值，其他什么也没有做。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  // 这里只是简单的赋值</span><br><span class="line"><span class="meta">public</span> void startScroll(<span class="keyword">int</span> startX, <span class="keyword">int</span> startY, <span class="keyword">int</span> <span class="built_in">dx</span>, <span class="keyword">int</span> <span class="built_in">dy</span>, <span class="keyword">int</span> duration) &#123;</span><br><span class="line">    mMode = SCROLL_MODE<span class="comment">;</span></span><br><span class="line">    mFinished = false<span class="comment">;</span></span><br><span class="line">    mDuration = duration<span class="comment">;</span></span><br><span class="line">    mStartTime = AnimationUtils.currentAnimationTimeMillis()<span class="comment">;</span></span><br><span class="line">    mStartX = startX<span class="comment">;</span></span><br><span class="line">    mStartY = startY<span class="comment">;</span></span><br><span class="line">    mFinalX = startX + <span class="built_in">dx</span><span class="comment">;</span></span><br><span class="line">    mFinalY = startY + <span class="built_in">dy</span><span class="comment">;</span></span><br><span class="line">    mDeltaX = <span class="built_in">dx</span><span class="comment">;</span></span><br><span class="line">    mDeltaY = <span class="built_in">dy</span><span class="comment">;</span></span><br><span class="line">    mDurationReciprocal = <span class="number">1.</span>0f / (<span class="meta">float</span>) mDuration<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后我们需要手动调用<code>View.invalidate()</code>刷新我们的前面，因为我们的View不会主动刷新界面，我们都知道<code>View.invalidate()</code>会通知我们的界面进行重绘，这个时候<code>View. draw(Canvas canvas)</code>就会被调用。细心的你这个时候可能就发现了，我们的<code>View.computeScroll()</code>方法没有参与进来！别急，别急，我们来看一下缩减后的<code>View. draw(Canvas canvas)</code>的源码：</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * This method is called by ViewGroup.drawChild() to have each child  </span></span><br><span class="line"><span class="comment">  * view draw itself.</span></span><br><span class="line"><span class="comment">  * This is where the View specializes rendering behavior based on layer type,</span></span><br><span class="line"><span class="comment">  * and hardware acceleration.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">boolean</span> draw(Canvas canvas, ViewGroup <span class="keyword">parent</span>, long drawingTime) &#123;</span><br><span class="line">    <span class="params">...</span></span><br><span class="line">    <span class="keyword">if</span> (!drawingWithRenderNode) &#123;</span><br><span class="line">        computeScroll();</span><br><span class="line">        sx = mScrollX;</span><br><span class="line">        sy = mScrollY;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="params">...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!drawingWithDrawingCache) &#123;</span><br><span class="line">        <span class="keyword">if</span> (drawingWithRenderNode) &#123;</span><br><span class="line">            <span class="params">...</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// Fast path for layouts with no backgrounds</span></span><br><span class="line">            <span class="keyword">if</span> ((mPrivateFlags &amp; PFLAG_SKIP_DRAW) == PFLAG_SKIP_DRAW) &#123;</span><br><span class="line">                <span class="params">...</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                draw(canvas);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="params">...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其实在通知界面重绘的时候是先调用我们上面的<code>draw(Canvas canvas, ViewGroup parent, long drawingTime)</code>方法，然后在依次调用了<code>View.computeScroll()</code> 和<code>View. draw(Canvas canvas)</code>方法，而View中的<code>View.computeScroll()</code>都是空实现，所以需要我们继承的时候自己复写方法。</p>
+<ol>
+<li>下面就是讲我们的重点部分了，通常我们在使用<code>Scroller</code>时，都会复写<code>View.computeScroll()</code>方法，之后我们会调用<code>Scroller.computeScrollOffset()</code>来判断滑动有没有完成，如下代码：<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">computeScroll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.computeScroll();</span><br><span class="line">    <span class="keyword">if</span>(mScroller.computeScrollOffset())&#123;</span><br><span class="line">        scrollTo(mScroller.getCurrX(),mScroller.getCurrY());</span><br><span class="line">        <span class="comment">// 刷新绘制的界面</span></span><br><span class="line">        invalidate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>整个<code>Scroller</code>的核心部分就是<code>Scroller.computeScrollOffset()</code>方法了，我们还是来看源码：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">boolean</span> computeScrollOffset() &#123;</span><br><span class="line">    <span class="keyword">if</span> (mFinished) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//计算流逝的时间</span></span><br><span class="line">    <span class="built_in">int</span> timePassed = (<span class="built_in">int</span>)(AnimationUtils.currentAnimationTimeMillis() - mStartTime);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (timePassed &lt; mDuration) &#123;</span><br><span class="line">        <span class="keyword">switch</span> (mMode) &#123;</span><br><span class="line">        <span class="keyword">case</span> SCROLL_MODE:</span><br><span class="line">            <span class="keyword">final</span> <span class="built_in">float</span> x = mInterpolator.getInterpolation(timePassed * mDurationReciprocal);</span><br><span class="line">            <span class="comment">// 重点部分 根据Interpolator插值器计算在该时间段里移动的距离加上初始赋值赋值给mCurrX和mCurrY</span></span><br><span class="line">            mCurrX = mStartX + Math.<span class="built_in">round</span>(x * mDeltaX);</span><br><span class="line">            mCurrY = mStartY + Math.<span class="built_in">round</span>(x * mDeltaY);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> FLING_MODE:</span><br><span class="line">            <span class="comment">//滑动时，抬起手执行的惯性运动，通过复杂的运算获取当前的mCurrX 、mCurrY 值。</span></span><br><span class="line">            <span class="keyword">final</span> <span class="built_in">float</span> t = (<span class="built_in">float</span>) timePassed / mDuration;</span><br><span class="line">            <span class="keyword">final</span> <span class="built_in">int</span> index = (<span class="built_in">int</span>) (NB_SAMPLES * t);</span><br><span class="line">            <span class="built_in">float</span> distanceCoef = <span class="number">1.</span>f;</span><br><span class="line">            <span class="built_in">float</span> velocityCoef = <span class="number">0.</span>f;</span><br><span class="line">            <span class="keyword">if</span> (index &lt; NB_SAMPLES) &#123;</span><br><span class="line">                <span class="keyword">final</span> <span class="built_in">float</span> t_inf = (<span class="built_in">float</span>) index / NB_SAMPLES;</span><br><span class="line">                <span class="keyword">final</span> <span class="built_in">float</span> t_sup = (<span class="built_in">float</span>) (index + <span class="number">1</span>) / NB_SAMPLES;</span><br><span class="line">                <span class="keyword">final</span> <span class="built_in">float</span> d_inf = SPLINE_POSITION[index];</span><br><span class="line">                <span class="keyword">final</span> <span class="built_in">float</span> d_sup = SPLINE_POSITION[index + <span class="number">1</span>];</span><br><span class="line">                velocityCoef = (d_sup - d_inf) / (t_sup - t_inf);</span><br><span class="line">                distanceCoef = d_inf + (t - t_inf) * velocityCoef;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            mCurrVelocity = velocityCoef * mDistance / mDuration * <span class="number">1000.0</span>f;</span><br><span class="line">            </span><br><span class="line">            mCurrX = mStartX + Math.<span class="built_in">round</span>(distanceCoef * (mFinalX - mStartX));</span><br><span class="line">            <span class="comment">// Pin to mMinX &lt;= mCurrX &lt;= mMaxX</span></span><br><span class="line">            mCurrX = Math.<span class="built_in">min</span>(mCurrX, mMaxX);</span><br><span class="line">            mCurrX = Math.<span class="built_in">max</span>(mCurrX, mMinX);</span><br><span class="line">            </span><br><span class="line">            mCurrY = mStartY + Math.<span class="built_in">round</span>(distanceCoef * (mFinalY - mStartY));</span><br><span class="line">            <span class="comment">// Pin to mMinY &lt;= mCurrY &lt;= mMaxY</span></span><br><span class="line">            mCurrY = Math.<span class="built_in">min</span>(mCurrY, mMaxY);</span><br><span class="line">            mCurrY = Math.<span class="built_in">max</span>(mCurrY, mMinY);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (mCurrX == mFinalX &amp;&amp; mCurrY == mFinalY) &#123;</span><br><span class="line">                mFinished = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        mCurrX = mFinalX;</span><br><span class="line">        mCurrY = mFinalY;</span><br><span class="line">        mFinished = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，<code>Scroller.computeScrollOffset()</code>并非简单的判断滑动是否完成，它还计算了当前应当滑动到的距离，最后在我们自定义的<code>View</code>中，通过<code>scrollTo(mScroller.getCurrX(),mScroller.getCurrY());</code>完成实现滑动过程，接着调用<code>View.invalidate()</code>重复界面刷新到绘制的过程，直到我们整个滑动过程完成。到这里，我们的整个过程就结束了。</p>
+<h2 id="4-引用"><a href="#4-引用" class="headerlink" title="4. 引用"></a>4. 引用</h2><p><a href="https://www.jianshu.com/p/01ee006c5613" target="_blank" rel="noopener">Scroller 解析</a></p>
+<p>&lt;<android开发艺术探索>&gt;</android开发艺术探索></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">动画</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/16/2018-12-16-PhotoPagerView/" class="archive-article-date">
-  	<time datetime="2018-12-16T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/16/2018-12-16-PhotoPagerView/">造一个轮子-PhotoPagerView</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自定义View</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/13/2019-01-13-一文读懂Scroller/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/12/16/2018-12-16-PhotoPagerView/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          造一个轮子-PhotoPagerView
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="2019-01-13-一文读懂Scroller"></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js"></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "cysX3aGWt",
+        conf: "prod_1dcda447175aada96edcdb7e412338fa"
+    });
+</script>
+
+  
+
+  
+
+  
 
 
           </div>
@@ -292,9 +373,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

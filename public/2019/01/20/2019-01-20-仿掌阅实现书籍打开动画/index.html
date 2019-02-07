@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Android | Joe的博客</title>
+  <title>仿掌阅实现书籍打开动画 | Joe的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
-<meta name="keywords" content="Android,kotlin,java,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joe的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Android/index.html">
+  <meta name="keywords" content="Android,动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="仿掌阅实现书籍打开动画">
+<meta property="og:url" content="http://yoursite.com/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/index.html">
 <meta property="og:site_name" content="Joe的博客">
-<meta property="og:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://plew0vk60.bkt.clouddn.com//blog/190120/high-definition-wallpapers-for-android.jpg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-ae84076770395175.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-e06ee7f20473b793.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-5cd93e6016701955.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-06T07:15:01.514Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Joe的博客">
-<meta name="twitter:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta name="twitter:title" content="仿掌阅实现书籍打开动画">
+<meta name="twitter:image" content="http://plew0vk60.bkt.clouddn.com//blog/190120/high-definition-wallpapers-for-android.jpg">
   
   
     <link rel="icon" href="/assets/img/favicon.ico">
@@ -160,36 +163,59 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2019-01-20-仿掌阅实现书籍打开动画" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/" class="archive-article-date">
-  	<time datetime="2019-01-20T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/">仿掌阅实现书籍打开动画</a>
+    <h1 class="article-title" itemprop="name">
+      仿掌阅实现书籍打开动画
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/" class="archive-article-date">
+  	<time datetime="2019-01-20T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://plew0vk60.bkt.clouddn.com//blog/190120/high-definition-wallpapers-for-android.jpg" alt="安卓机器人.png"></p>
+<a id="more"></a>
+<h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一. 前言"></a>一. 前言</h2><p>上次打开掌阅的时候看到书籍打开动画的效果还不错，正好最近也在做阅读器的项目，所以想在项目中实现一下。</p>
+<h2 id="二-思路"><a href="#二-思路" class="headerlink" title="二. 思路"></a>二. 思路</h2><p>讲思路之前，先看一下实现效果吧：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9271486-ae84076770395175.gif?imageMogr2/auto-orient/strip" alt="书籍打开关闭动画.gif"></p>
+<p>看完实现效果，我们再来讲一下实现思路：<img src="https://upload-images.jianshu.io/upload_images/9271486-e06ee7f20473b793.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="书籍打开动画的思路.png"></p>
+<ol>
+<li>获取<code>RecyclerView</code>（或<code>GridView</code>）中的<code>子View里面的ImageView</code>在屏幕的位置，因为获取的是Window下的位置，所以Y轴位置取出来还要减去<code>状态栏的高度</code>。</li>
+<li>图书的封面和内容页（其实是两个<code>ImageView</code>）设置成刚刚取出的<code>子View里面的ImageView</code>的位置和大小。</li>
+<li>设置动画，这边缩放动画的轴心点的计算方式需要注意一下，等下文讲解代码的时候再具体解释，还有就是利用<code>Camera</code>类（非平常的相机类）实现的打开和关闭动画（如果你对Camera不熟悉，建议先看GcsSloop大佬的这篇<a href="https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B11%5DMatrix_3D_Camera.md" target="_blank" rel="noopener">Matrix Camera</a>）。<h2 id="三-具体实现"><a href="#三-具体实现" class="headerlink" title="三. 具体实现"></a>三. 具体实现</h2>我会在这个过程中一步一步教你如何实现这个效果：<br><strong>1. 布局</strong><br><code>activity_open_book.xml</code>:<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;RelativeLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">    tools:context=<span class="string">".ui.activity.OpenBookActivity"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android<span class="selector-class">.support</span><span class="selector-class">.v7</span><span class="selector-class">.widget</span><span class="selector-class">.RecyclerView</span></span><br><span class="line">        android:id=<span class="string">"@+id/recycle"</span></span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span>/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/img_content"</span></span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:<span class="attribute">visibility</span>=<span class="string">"gone"</span></span><br><span class="line">        android:contentDescription=<span class="string">"@string/app_name"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/img_first"</span></span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        android:<span class="attribute">visibility</span>=<span class="string">"gone"</span></span><br><span class="line">        android:contentDescription=<span class="string">"@string/app_name"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><code>recycler_item_book.xml:</code><br><code>RecylerVIew</code>中的子布局，其实也就是<code>ImageView</code>和<code>TextView</code>，这里就不贴放了。</p>
+<p><strong>2. 动画</strong><br> 我们只讲解旋转动画，因为旋转动画中也会涉及缩放动画。想一下，如果想要在界面中实现缩放动画，我们得找好轴心点，那么，轴心点的x，y坐标如何计算呢？为了更好的求出坐标，我们先来看一张图：<img src="https://upload-images.jianshu.io/upload_images/9271486-5cd93e6016701955.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="缩放讲解图.png"><br>我们可以得出这样的公式：<code>x / pl = vr / pr</code>，而对于<code>pl</code>、<code>vr</code>和<code>pr</code>，则有<code>pl = ml + x</code>，<code>vr = w - x</code>和<code>pr = pw -pl</code>，综合以上的公式，最终我们可以得出的<code>x = ml * pw / (pw - w)</code>，y的坐标可以用同样的方式求得。下面我们来看代码：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class Rotate3DAnimation extends Animation &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> TAG = <span class="string">"Rotate3DAnimation"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="built_in">float</span> mFromDegrees;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="built_in">float</span> mToDegrees;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="built_in">float</span> mMarginLeft;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="built_in">float</span> mMarginTop;</span><br><span class="line">    <span class="comment">// private final float mDepthZ;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="built_in">float</span> mAnimationScale;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">boolean</span> <span class="built_in">reverse</span>;</span><br><span class="line">    <span class="keyword">private</span> Camera mCamera;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 旋转中心</span></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> mPivotX;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> mPivotY;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">float</span> <span class="built_in">scale</span> = <span class="number">1</span>;    <span class="comment">// &lt;------- 像素密度</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Rotate3DAnimation(Context context, <span class="built_in">float</span> mFromDegrees, <span class="built_in">float</span> mToDegrees, <span class="built_in">float</span> mMarginLeft, <span class="built_in">float</span> mMarginTop,</span><br><span class="line">                             <span class="built_in">float</span> animationScale, <span class="built_in">boolean</span> <span class="built_in">reverse</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.mFromDegrees = mFromDegrees;</span><br><span class="line">        <span class="keyword">this</span>.mToDegrees = mToDegrees;</span><br><span class="line">        <span class="keyword">this</span>.mMarginLeft = mMarginLeft;</span><br><span class="line">        <span class="keyword">this</span>.mMarginTop = mMarginTop;</span><br><span class="line">        <span class="keyword">this</span>.mAnimationScale = animationScale;</span><br><span class="line">        <span class="keyword">this</span>.<span class="built_in">reverse</span> = <span class="built_in">reverse</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取手机像素密度 （即dp与px的比例）</span></span><br><span class="line">        <span class="built_in">scale</span> = context.getResources().getDisplayMetrics().density;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> initialize(<span class="built_in">int</span> <span class="built_in">width</span>, <span class="built_in">int</span> <span class="built_in">height</span>, <span class="built_in">int</span> parentWidth, <span class="built_in">int</span> parentHeight) &#123;</span><br><span class="line">        <span class="keyword">super</span>.initialize(<span class="built_in">width</span>, <span class="built_in">height</span>, parentWidth, parentHeight);</span><br><span class="line"></span><br><span class="line">        mCamera = <span class="keyword">new</span> Camera();</span><br><span class="line">        mPivotX = calculatePivotX(mMarginLeft, parentWidth, <span class="built_in">width</span>);</span><br><span class="line">        mPivotY = calculatePivotY(mMarginTop, parentHeight, <span class="built_in">height</span>);</span><br><span class="line">        Log.i(TAG,<span class="string">"width:"</span>+<span class="built_in">width</span>+<span class="string">",height:"</span>+<span class="built_in">height</span>+<span class="string">",pw:"</span>+parentWidth+<span class="string">",ph:"</span>+parentHeight);</span><br><span class="line">        Log.i(TAG,<span class="string">"中心点x:"</span>+mPivotX+<span class="string">",中心点y:"</span>+mPivotY);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> applyTransformation(<span class="built_in">float</span> interpolatedTime, Transformation t) &#123;</span><br><span class="line">        <span class="keyword">super</span>.applyTransformation(interpolatedTime, t);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">float</span> <span class="built_in">degrees</span> = <span class="built_in">reverse</span> ? mToDegrees + (mFromDegrees - mToDegrees) * interpolatedTime : mFromDegrees + (mToDegrees - mFromDegrees) * interpolatedTime;</span><br><span class="line">        Matrix matrix = t.getMatrix();</span><br><span class="line"></span><br><span class="line">        Camera <span class="built_in">camera</span> = mCamera;</span><br><span class="line">        <span class="built_in">camera</span>.<span class="built_in">save</span>();</span><br><span class="line">        <span class="built_in">camera</span>.<span class="built_in">rotateY</span>(<span class="built_in">degrees</span>);</span><br><span class="line">        <span class="built_in">camera</span>.getMatrix(matrix);</span><br><span class="line">        <span class="built_in">camera</span>.restore();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 修正失真，主要修改 MPERSP_0 和 MPERSP_1</span></span><br><span class="line">        <span class="built_in">float</span>[] mValues = <span class="keyword">new</span> <span class="built_in">float</span>[<span class="number">9</span>];</span><br><span class="line">        matrix.getValues(mValues);                <span class="comment">//获取数值</span></span><br><span class="line">        mValues[<span class="number">6</span>] = mValues[<span class="number">6</span>] / <span class="built_in">scale</span>;            <span class="comment">//数值修正</span></span><br><span class="line">        mValues[<span class="number">7</span>] = mValues[<span class="number">7</span>] / <span class="built_in">scale</span>;            <span class="comment">//数值修正</span></span><br><span class="line">        matrix.setValues(mValues);                <span class="comment">//重新赋值</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">reverse</span>) &#123;</span><br><span class="line">            matrix.postScale(<span class="number">1</span> + (mAnimationScale - <span class="number">1</span>) * interpolatedTime, <span class="number">1</span> + (mAnimationScale - <span class="number">1</span>) * interpolatedTime,</span><br><span class="line">                    mPivotX - mMarginLeft, mPivotY - mMarginTop);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            matrix.postScale(<span class="number">1</span> + (mAnimationScale - <span class="number">1</span>) * (<span class="number">1</span> - interpolatedTime), <span class="number">1</span> + (mAnimationScale - <span class="number">1</span>) * (<span class="number">1</span> - interpolatedTime),</span><br><span class="line">                    mPivotX - mMarginLeft, mPivotY - mMarginTop);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算缩放的中心点的横坐标</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param marginLeft  该View距离父布局左边的距离</span></span><br><span class="line"><span class="comment">     * @param parentWidth 父布局的宽度</span></span><br><span class="line"><span class="comment">     * @param width       View的宽度</span></span><br><span class="line"><span class="comment">     * @return 缩放中心点的横坐标</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> calculatePivotX(<span class="built_in">float</span> marginLeft, <span class="built_in">float</span> parentWidth, <span class="built_in">float</span> <span class="built_in">width</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> parentWidth * marginLeft / (parentWidth - <span class="built_in">width</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算缩放的中心点的纵坐标</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * @param marginTop    该View顶部距离父布局顶部的距离</span></span><br><span class="line"><span class="comment">     * @param parentHeight 父布局的高度</span></span><br><span class="line"><span class="comment">     * @param height       子布局的高度</span></span><br><span class="line"><span class="comment">     * @return 缩放的中心点的纵坐标</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">float</span> calculatePivotY(<span class="built_in">float</span> marginTop, <span class="built_in">float</span> parentHeight, <span class="built_in">float</span> <span class="built_in">height</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> parentHeight * marginTop / (parentHeight - <span class="built_in">height</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="built_in">reverse</span>() &#123;</span><br><span class="line">        <span class="built_in">reverse</span> = !<span class="built_in">reverse</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>计算缩放点我们在上面已经讨论过，这里我们就只看函数<code>applyTransformation(float interpolatedTime, Transformation t)</code>，我们先判断我们当前是打开书还是合上书的状态（这两个状态使得动画正好相反），计算好当前旋转度数再取得Camera，利用<code>camera.rotateY(degrees)</code>实现书本围绕Y轴旋转，之后拿到我们的矩阵，围绕计算出的中心点进行缩放。<br><strong>3. 使用</strong><br> 这一步我们需要将动画运用到我们的界面上去，当点击我们的RecyclerView的时候，我们需要取出RecyclerView中的<code>子View中的ImageView</code>，在适配器中利用监听器传出：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public<span class="built_in"> interface </span>OnBookClickListener&#123;</span><br><span class="line">    void onItemClick(int pos,View view);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接着，我们在<code>OpenBookActivity</code>中实现<code>OnBookClickListener</code>接口，省略了一些代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OpenBookActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">Animation</span>.<span class="title">AnimationListener</span>,<span class="title">BookAdapter</span>.<span class="title">OnBookClickListener</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"OpenBookActivity"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//  一系列变量 此处省略</span></span><br><span class="line">    ... </span><br><span class="line">    <span class="comment">// 记录View的位置</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] location = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">    <span class="comment">// 内容页</span></span><br><span class="line">    <span class="keyword">private</span> ImageView mContent;</span><br><span class="line">    <span class="comment">// 封面</span></span><br><span class="line">    <span class="keyword">private</span> ImageView mFirst;</span><br><span class="line">    <span class="comment">// 缩放动画</span></span><br><span class="line">    <span class="keyword">private</span> ContentScaleAnimation scaleAnimation;</span><br><span class="line">    <span class="comment">// 3D旋转动画</span></span><br><span class="line">    <span class="keyword">private</span> Rotate3DAnimation threeDAnimation;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_open_book);</span><br><span class="line"></span><br><span class="line">        initWidget();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWidget</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取状态栏高度</span></span><br><span class="line">        statusHeight = -<span class="number">1</span>;</span><br><span class="line">        <span class="comment">//获取status_bar_height资源的ID</span></span><br><span class="line">        <span class="keyword">int</span> resourceId = getResources().getIdentifier(<span class="string">"status_bar_height"</span>, <span class="string">"dimen"</span>, <span class="string">"android"</span>);</span><br><span class="line">        <span class="keyword">if</span> (resourceId &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//根据资源ID获取响应的尺寸值</span></span><br><span class="line">            statusHeight = getResources().getDimensionPixelSize(resourceId);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        initData();</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重复添加数据</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            values.add(R.drawable.preview);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onRestart();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当界面重新进入的时候进行合书的动画</span></span><br><span class="line">        <span class="keyword">if</span>(isOpenBook) &#123;</span><br><span class="line">            scaleAnimation.reverse();</span><br><span class="line">            threeDAnimation.reverse();</span><br><span class="line">            mFirst.clearAnimation();</span><br><span class="line">            mFirst.startAnimation(threeDAnimation);</span><br><span class="line">            mContent.clearAnimation();</span><br><span class="line">            mContent.startAnimation(scaleAnimation);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animation animation)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(scaleAnimation.hasEnded() &amp;&amp; threeDAnimation.hasEnded()) &#123;</span><br><span class="line">            <span class="comment">// 两个动画都结束的时候再处理后续操作</span></span><br><span class="line">            <span class="keyword">if</span> (!isOpenBook) &#123;</span><br><span class="line">                isOpenBook = <span class="keyword">true</span>;</span><br><span class="line">                BookSampleActivity.show(<span class="keyword">this</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                isOpenBook = <span class="keyword">false</span>;</span><br><span class="line">                mFirst.clearAnimation();</span><br><span class="line">                mContent.clearAnimation();</span><br><span class="line">                mFirst.setVisibility(View.GONE);</span><br><span class="line">                mContent.setVisibility(View.GONE);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(<span class="keyword">int</span> pos,View view)</span> </span>&#123;</span><br><span class="line">        mFirst.setVisibility(View.VISIBLE);</span><br><span class="line">        mContent.setVisibility(View.VISIBLE);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算当前的位置坐标</span></span><br><span class="line">        view.getLocationInWindow(location);</span><br><span class="line">        <span class="keyword">int</span> width = view.getWidth();</span><br><span class="line">        <span class="keyword">int</span> height = view.getHeight();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 两个ImageView设置大小和位置</span></span><br><span class="line">        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mFirst.getLayoutParams();</span><br><span class="line">        params.leftMargin = location[<span class="number">0</span>];</span><br><span class="line">        params.topMargin = location[<span class="number">1</span>] - statusHeight;</span><br><span class="line">        params.width = width;</span><br><span class="line">        params.height = height;</span><br><span class="line">        mFirst.setLayoutParams(params);</span><br><span class="line">        mContent.setLayoutParams(params);</span><br><span class="line">        <span class="comment">//  设置内容</span></span><br><span class="line">        Bitmap contentBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);</span><br><span class="line">        contentBitmap.eraseColor(getResources().getColor(R.color.read_theme_yellow));</span><br><span class="line">        mContent.setImageBitmap(contentBitmap);</span><br><span class="line">        <span class="comment">// 设置封面</span></span><br><span class="line">        Bitmap coverBitmap = BitmapFactory.decodeResource(getResources(),values.get(pos));</span><br><span class="line">        mFirst.setImageBitmap(coverBitmap);</span><br><span class="line">        <span class="comment">// 设置封面</span></span><br><span class="line">        initAnimation(view);</span><br><span class="line">        Log.i(TAG,<span class="string">"left:"</span>+mFirst.getLeft()+<span class="string">"top:"</span>+mFirst.getTop());</span><br><span class="line"></span><br><span class="line">        mContent.clearAnimation();</span><br><span class="line">        mContent.startAnimation(scaleAnimation);</span><br><span class="line">        mFirst.clearAnimation();</span><br><span class="line">        mFirst.startAnimation(threeDAnimation);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化动画</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initAnimation</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">float</span> viewWidth = view.getWidth();</span><br><span class="line">        <span class="keyword">float</span> viewHeight = view.getHeight();</span><br><span class="line"></span><br><span class="line">        DisplayMetrics displayMetrics = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">        getWindow().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);</span><br><span class="line">        <span class="keyword">float</span> maxWidth = displayMetrics.widthPixels;</span><br><span class="line">        <span class="keyword">float</span> maxHeight = displayMetrics.heightPixels;</span><br><span class="line">        <span class="keyword">float</span> horScale = maxWidth / viewWidth;</span><br><span class="line">        <span class="keyword">float</span> verScale = maxHeight / viewHeight;</span><br><span class="line">        <span class="keyword">float</span> scale = horScale &gt; verScale ? horScale : verScale;</span><br><span class="line"></span><br><span class="line">        scaleAnimation = <span class="keyword">new</span> ContentScaleAnimation(location[<span class="number">0</span>], location[<span class="number">1</span>], scale, <span class="keyword">false</span>);</span><br><span class="line">        scaleAnimation.setInterpolator(<span class="keyword">new</span> DecelerateInterpolator());  <span class="comment">//设置插值器</span></span><br><span class="line">        scaleAnimation.setDuration(<span class="number">1000</span>);</span><br><span class="line">        scaleAnimation.setFillAfter(<span class="keyword">true</span>);  <span class="comment">//动画停留在最后一帧</span></span><br><span class="line">        scaleAnimation.setAnimationListener(OpenBookActivity.<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        threeDAnimation = <span class="keyword">new</span> Rotate3DAnimation(OpenBookActivity.<span class="keyword">this</span>, -<span class="number">180</span>, <span class="number">0</span></span><br><span class="line">                , location[<span class="number">0</span>], location[<span class="number">1</span>], scale, <span class="keyword">true</span>);</span><br><span class="line">        threeDAnimation.setDuration(<span class="number">1000</span>);                         <span class="comment">//设置动画时长</span></span><br><span class="line">        threeDAnimation.setFillAfter(<span class="keyword">true</span>);                        <span class="comment">//保持旋转后效果</span></span><br><span class="line">        threeDAnimation.setInterpolator(<span class="keyword">new</span> DecelerateInterpolator());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第一个重点是复写的<code>OnBookClickListener</code>中的<code>onItemClick</code>方法，在该方法中：</p>
+<ul>
+<li>我们根据取得的<code>view</code>(实际上是子View中的ImageView)，计算出当前界面的两个ImageView的位置和大小。</li>
+<li>计算缩放参数和播放动画的顺序，展开动画，和处理动画结束后的事件。</li>
+</ul>
+<p>第二个重点是中心回到当前界面的时候，合上书的动画，就是刚刚的动画倒过来执行，在<code>onRestart()</code>方法中执行，执行完成之后隐藏两个<code>ImageVIew</code>。</p>
+<h2 id="四-总结"><a href="#四-总结" class="headerlink" title="四. 总结"></a>四. 总结</h2><p>总的来说就是<code>Camera</code>和<code>Animation</code>的简单使用，本人水平有限，难免不足，欢迎提出。<br>项目地址：<a href="https://github.com/mCyp/Test" target="_blank" rel="noopener">Test</a><br>Over~</p>
+<p>引用：<br><a href="https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B11%5DMatrix_3D_Camera.md" target="_blank" rel="noopener">Matrix Camera</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -205,71 +231,96 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/31/2018-12-31-新年总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2018年度总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/16/2018-12-16-PhotoPagerView/" class="archive-article-date">
-  	<time datetime="2018-12-16T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/16/2018-12-16-PhotoPagerView/">造一个轮子-PhotoPagerView</a>
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自定义View</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -292,9 +343,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
