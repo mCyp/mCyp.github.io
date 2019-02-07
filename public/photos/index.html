@@ -286,7 +286,25 @@ var _hmt = _hmt || [];
 
 
 
-
+ 
+  <div id="gittalk-container"></div> 
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'f7af607ff9ad6708488f',
+  	clientSecret: '3cecec8908bdde54345732ee04e3c8ad68cec1e7',
+  	repo: 'mCyp.github.io',
+  	owner: 'mCyp',
+  	admin: ['mCyp'],
+  	id: location.pathname,
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gittalk-container') 
+}
+</script>
+  
           </div>
         </div>
       </div>
