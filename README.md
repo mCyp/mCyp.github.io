@@ -1,6 +1,6 @@
 
 
-(我的博客)[https://mcyp.github.io/] :bamboo:
+[我的博客](https://mcyp.github.io/):bamboo:
 
 如果只有一个master分支存放页面的话，那么一旦更换电脑，hexo所部署需要的文件就无法重现
 
