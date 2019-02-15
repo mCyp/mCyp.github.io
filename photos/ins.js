@@ -116,8 +116,8 @@
         var data = res.list[j].arr;
         var liTmpl = "";
         for (var i = 0, len = data.link.length; i < len; i++) {
-          var minSrc = 'http://plew0vk60.bkt.clouddn.com//blog/photo-min/' + data.link[i] + '.min.jpg';
-          var src = 'http://plew0vk60.bkt.clouddn.com//blog/photo/' + data.link[i];
+          var minSrc = 'https://raw.githubusercontent.com/mCyp/Photo/master/' + data.link[i] + '.min.jpg';
+          var src = 'https://raw.githubusercontent.com/mCyp/Photo/master/' + data.link[i];
           var type = data.type[i];
           var target = src + (type === 'video' ? '.mp4' : '.jpg');
           src += '.jpg';
