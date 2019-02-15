@@ -8,23 +8,25 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>带你学习Android图片缓存机制 | Joe的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="Android,缓存">
+  <meta name="description" content="一. 前言我们为什么要学习图片缓存机制？简单来说，就是帮助用户省时省流量。当用户使用RecyclerView或者ListView的时候，频繁的发起网络请求不仅会消耗大量的流量，还会消耗大量的时间，毫无疑问，这会让用户的体验相当糟糕。虽然Glide等图片加载框架已经替我们处理好了图片缓存的问题，但是我们仍然有必要去了解和学习图片缓存机制，知其然才能知其所以然。">
+<meta name="keywords" content="Android,缓存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="带你学习Android图片缓存机制">
 <meta property="og:url" content="http://yoursite.com/2019/02/14/2019-02-14-带你学习Android图片缓存机制/index.html">
 <meta property="og:site_name" content="Joe的博客">
+<meta property="og:description" content="一. 前言我们为什么要学习图片缓存机制？简单来说，就是帮助用户省时省流量。当用户使用RecyclerView或者ListView的时候，频繁的发起网络请求不仅会消耗大量的流量，还会消耗大量的时间，毫无疑问，这会让用户的体验相当糟糕。虽然Glide等图片加载框架已经替我们处理好了图片缓存的问题，但是我们仍然有必要去了解和学习图片缓存机制，知其然才能知其所以然。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/mCyp/Photo/master/newyear.jpg">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-71d045829fc98e71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-23ac4f071b654657.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-26259d372337c4f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-15T07:25:09.603Z">
+<meta property="og:updated_time" content="2019-02-15T07:37:39.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="带你学习Android图片缓存机制">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/mCyp/Photo/master/newyear.jpg">
+<meta name="twitter:description" content="一. 前言我们为什么要学习图片缓存机制？简单来说，就是帮助用户省时省流量。当用户使用RecyclerView或者ListView的时候，频繁的发起网络请求不仅会消耗大量的流量，还会消耗大量的时间，毫无疑问，这会让用户的体验相当糟糕。虽然Glide等图片加载框架已经替我们处理好了图片缓存的问题，但是我们仍然有必要去了解和学习图片缓存机制，知其然才能知其所以然。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9271486-71d045829fc98e71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
   
-    <link rel="icon" href="/assets/img/favicon.ico">
+    <link rel="icon" href="/assets/blogImg/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.266c1c.css">
   <style type="text/css">
@@ -54,7 +56,7 @@ var _hmt = _hmt || [];
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #2AE5F1"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -107,7 +109,7 @@ var _hmt = _hmt || [];
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #2AE5F1"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -183,9 +185,8 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://raw.githubusercontent.com/mCyp/Photo/master/newyear.jpg" alt="newYear.png"></p>
+        <h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一. 前言"></a>一. 前言</h2><p>我们为什么要学习图片缓存机制？简单来说，就是帮助用户省时省流量。当用户使用<code>RecyclerView</code>或者<code>ListView</code>的时候，频繁的发起网络请求不仅会消耗大量的流量，还会消耗大量的时间，毫无疑问，这会让用户的体验相当糟糕。虽然Glide等图片加载框架已经替我们处理好了图片缓存的问题，但是我们仍然有必要去了解和学习图片缓存机制，知其然才能知其所以然。</p>
 <a id="more"></a>
-<h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一. 前言"></a>一. 前言</h2><p>我们为什么要学习图片缓存机制？简单来说，就是帮助用户省时省流量。当用户使用<code>RecyclerView</code>或者<code>ListView</code>的时候，频繁的发起网络请求不仅会消耗大量的流量，还会消耗大量的时间，毫无疑问，这会让用户的体验相当糟糕。虽然Glide等图片加载框架已经替我们处理好了图片缓存的问题，但是我们仍然有必要去了解和学习图片缓存机制，知其然才能知其所以然。</p>
 <h2 id="二-思路"><a href="#二-思路" class="headerlink" title="二. 思路"></a>二. 思路</h2><p><img src="https://upload-images.jianshu.io/upload_images/9271486-71d045829fc98e71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="带你学习Android缓存机制.png"></p>
 <h2 id="三-简单了解Android图片缓存机制"><a href="#三-简单了解Android图片缓存机制" class="headerlink" title="三. 简单了解Android图片缓存机制"></a>三. 简单了解Android图片缓存机制</h2><p>在这里，我们只要了解Android图片的<code>三级缓存机制</code>就行了，何为三级缓存机制？</p>
 <ol>
