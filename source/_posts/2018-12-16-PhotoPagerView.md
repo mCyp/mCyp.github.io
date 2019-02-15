@@ -8,7 +8,7 @@ tags:
 	- 自定义View
 ---
 
-![图片.gif](http://plew0vk60.bkt.clouddn.com//blog/181231/translate.gif)
+![图片.gif](https://raw.githubusercontent.com/mCyp/Photo/master/P81221-175035.jpg)
 
 <!-- more -->
 

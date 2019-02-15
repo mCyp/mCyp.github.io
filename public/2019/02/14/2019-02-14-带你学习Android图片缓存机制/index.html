@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 动画 | Joe的博客</title>
+  <title>带你学习Android图片缓存机制 | Joe的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
-<meta name="keywords" content="Android,kotlin,java,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joe的博客">
-<meta property="og:url" content="http://yoursite.com/tags/动画/index.html">
+  <meta name="keywords" content="Android,缓存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="带你学习Android图片缓存机制">
+<meta property="og:url" content="http://yoursite.com/2019/02/14/2019-02-14-带你学习Android图片缓存机制/index.html">
 <meta property="og:site_name" content="Joe的博客">
-<meta property="og:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/mCyp/Photo/master/newyear.jpg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-71d045829fc98e71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-23ac4f071b654657.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-26259d372337c4f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-15T07:25:09.603Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Joe的博客">
-<meta name="twitter:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta name="twitter:title" content="带你学习Android图片缓存机制">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mCyp/Photo/master/newyear.jpg">
   
   
     <link rel="icon" href="/assets/img/favicon.ico">
@@ -160,36 +163,84 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2019-02-14-带你学习Android图片缓存机制" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/" class="archive-article-date">
-  	<time datetime="2019-01-20T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/">仿掌阅实现书籍打开动画</a>
+    <h1 class="article-title" itemprop="name">
+      带你学习Android图片缓存机制
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/02/14/2019-02-14-带你学习Android图片缓存机制/" class="archive-article-date">
+  	<time datetime="2019-02-14T02:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://raw.githubusercontent.com/mCyp/Photo/master/newyear.jpg" alt="newYear.png"></p>
+<a id="more"></a>
+<h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一. 前言"></a>一. 前言</h2><p>我们为什么要学习图片缓存机制？简单来说，就是帮助用户省时省流量。当用户使用<code>RecyclerView</code>或者<code>ListView</code>的时候，频繁的发起网络请求不仅会消耗大量的流量，还会消耗大量的时间，毫无疑问，这会让用户的体验相当糟糕。虽然Glide等图片加载框架已经替我们处理好了图片缓存的问题，但是我们仍然有必要去了解和学习图片缓存机制，知其然才能知其所以然。</p>
+<h2 id="二-思路"><a href="#二-思路" class="headerlink" title="二. 思路"></a>二. 思路</h2><p><img src="https://upload-images.jianshu.io/upload_images/9271486-71d045829fc98e71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="带你学习Android缓存机制.png"></p>
+<h2 id="三-简单了解Android图片缓存机制"><a href="#三-简单了解Android图片缓存机制" class="headerlink" title="三. 简单了解Android图片缓存机制"></a>三. 简单了解Android图片缓存机制</h2><p>在这里，我们只要了解Android图片的<code>三级缓存机制</code>就行了，何为三级缓存机制？</p>
+<ol>
+<li><code>内存缓存</code>，读取速度最快。</li>
+<li><code>硬盘缓存（文件缓存）</code>，读取速度比内存缓存稍慢。</li>
+<li><code>网络缓存</code>，读取速度最慢。</li>
+</ol>
+<p>所以，我们正确的图片的读取顺序应该是 内存缓存 &gt; 硬盘缓存 &gt; 网络缓存，讲到这里，我们是不是要手动开始撸码了？看官别急，我们先讲解一下基本的API。</p>
+<h2 id="四-了解一下常用的API"><a href="#四-了解一下常用的API" class="headerlink" title="四. 了解一下常用的API"></a>四. 了解一下常用的API</h2><p>缓存机制的通用调度算法是LRU(最近最久未使用)，不熟悉的同学，可以自行谷歌，本篇不做介绍。与内存缓存和硬盘缓存对应的类分别是<code>LruCache</code>和<code>DiskLruCache</code>，Android在Android 3.1加入了<code>LruCache</code>缓存类，而<code>DiskLruCache</code>并非谷歌官方编写，所以我们在写程序的时候不能直接调用，好在<a href="https://github.com/JakeWharton" target="_blank" rel="noopener">Jake Wharton</a>大神集成了库，我们直接用就好了，只要在build.gradle添加如下语句：<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">implementation</span> <span class="string">'com.jakewharton:disklrucache:2.0.2'</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="1-LruCache常用API介绍"><a href="#1-LruCache常用API介绍" class="headerlink" title="1.LruCache常用API介绍"></a>1.LruCache常用API介绍</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:center">简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">LruCache(int maxSize)</td>
+<td style="text-align:center">构造方法，<code>maxSize</code>是缓存大小</td>
+</tr>
+<tr>
+<td style="text-align:left">put(@NonNull K key, @NonNull V value)</td>
+<td style="text-align:center">以键值对的方式存入内存缓存</td>
+</tr>
+<tr>
+<td style="text-align:left">get(@NonNull K key)</td>
+<td style="text-align:center">使用键取出存入的值</td>
+</tr>
+<tr>
+<td style="text-align:left">remove(@NonNull K key)</td>
+<td style="text-align:center">从内存缓存中移除指定键的值</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-DiskLruCache常用API介绍"><a href="#2-DiskLruCache常用API介绍" class="headerlink" title="2.DiskLruCache常用API介绍"></a>2.DiskLruCache常用API介绍</h4><p>介绍之前，我们需要了解<code>DiskLruCache</code>使用比<code>LruCache</code>复杂，我们不能直接使用构造方法直接创建一个<code>DiskLruCache</code>，而是使用<code>open(File directory, int appVersion, int valueCount, long maxSize)</code>这个静态方法创建。如果想要将数据存入缓存，需要通过一个<code>key</code>获取到<code>DiskLruCache.Editor</code>对象，然后使用<code>Editor</code>对象获取输出流将我们的数据存入<code>硬盘缓存</code>，最后使用<code>flush</code>更新journal文件。对于想要深入探究的同学，请移步郭神的<a href="https://blog.csdn.net/guolin_blog/article/details/9316683" target="_blank" rel="noopener">Android DiskLruCache完全解析，硬盘缓存的最佳方案</a><br>| 方法                                                         |                             简介                             |<br>| :———————————————————– | :———————————————————-: |<br>| open(File directory, int appVersion, int valueCount, long maxSize) | <code>directory</code>是缓存目录，<code>appVersion</code>是版本号，<code>valueCount</code>是指定key可以对应多个缓存数量， |<br>| get(String key)                                              | 返回<code>Snapshot</code>对象，通过调用该对象的<code>getInputStream(int index)</code>方法可以获取输入流 |<br>| edit(String key)                                             |                返回<code>DiskLruCache.Editor</code>对象                 |<br>| <code>DiskLruCache.Editor</code>的newOutputStream(int index)            |               创建一个输出流，可以用来存入数据               |<br>| <code>DiskLruCache.Editor</code>的commit()                              |        在使用输出流缓存数据后，使用<code>commit()</code>才会生效        |<br>| <code>DiskLruCache.Editor</code>的abort()                               |       与<code>commit()</code>方法相反，使用<code>abort()</code>终止缓存生效        |<br>| flush()                                                      |                  同步缓存日志到journal文件                   |<br>这些是我们常用的方法，当然还有计算当前缓存数据字节的<code>size()</code>方法、关闭DiskLruCache的<code>close()</code>方法和清空缓存的<code>delete()</code>方法等。</p>
+<h2 id="五-手撸代码"><a href="#五-手撸代码" class="headerlink" title="五. 手撸代码"></a>五. 手撸代码</h2><p>网络请求这里我们使用Okhttp，同样需要在build.gradle中添加一行代码，如下：<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">implementation</span> <span class="string">'com.squareup.okhttp3:okhttp:3.12.1'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>1. 布局</strong><br>布局这里挺简单，就是一个线性布局里面放一个<code>RecyclerView</code>，<code>RecyclerView</code>子布局里面就是一个ImageView，具体的可以看代码。<br><strong>2. GridPhotoAdapter</strong><br>这个适配器可以说是本文里面最重要的一个类了（需要继承自<code>RecyclerView.Adapter</code>），我们慢慢往下看。<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 照片的网络路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">String</span>[] urls;</span><br><span class="line"><span class="comment">// 内存缓存</span></span><br><span class="line"><span class="keyword">private</span> LruCache&lt;<span class="keyword">String</span>,Bitmap&gt; mMemoryCache;</span><br><span class="line"><span class="comment">// 硬盘缓存</span></span><br><span class="line"><span class="keyword">private</span> DiskLruCache mDisLruCache;</span><br><span class="line"><span class="comment">// OkhttpClient</span></span><br><span class="line"><span class="keyword">private</span> OkHttpClient okHttpClient;</span><br><span class="line"><span class="comment">// 线程池 用来请求下载图片</span></span><br><span class="line"><span class="keyword">private</span> ExecutorService service;</span><br><span class="line"><span class="comment">// 主线程Handler 用来图片下载完成后更新ImageView</span></span><br><span class="line"><span class="keyword">private</span> Handler mHandler;</span><br><span class="line"><span class="keyword">private</span> Context mContext;</span><br></pre></td></tr></table></figure></p>
+<p>上面是我们需要用到的实例，作用已经在注释中标注出来了。接下来我们来介绍我们的构造函数和一些初始化工作：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> GridPhotoAdapter(<span class="keyword">String</span>[] urls, Handler mHandler, Context context) &#123;</span><br><span class="line">    <span class="keyword">this</span>.urls = urls;</span><br><span class="line">    <span class="keyword">this</span>.mHandler = mHandler;</span><br><span class="line">    <span class="keyword">this</span>.mContext = context;</span><br><span class="line">    init();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    一些必要的初始化的工作</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> init() &#123;</span><br><span class="line">    okHttpClient = <span class="keyword">new</span> OkHttpClient.Builder()</span><br><span class="line">            .build();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构建一定数量的线程池</span></span><br><span class="line">    service = Executors.newFixedThreadPool(<span class="number">6</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构建内存缓存</span></span><br><span class="line">    <span class="comment">// 取最大的1/8内存作为内存缓存</span></span><br><span class="line">    <span class="keyword">int</span> maxMemory = (<span class="keyword">int</span>) Runtime.getRuntime().maxMemory();</span><br><span class="line">    <span class="keyword">int</span> cacheSize = maxMemory/<span class="number">8</span>;</span><br><span class="line">    mMemoryCache = <span class="keyword">new</span> LruCache&lt;<span class="keyword">String</span>,Bitmap&gt;(cacheSize)&#123;</span><br><span class="line">        @Override</span><br><span class="line">        <span class="keyword">protected</span> <span class="keyword">int</span> sizeOf(@NonNull <span class="keyword">String</span> key, @NonNull Bitmap value) &#123;</span><br><span class="line">            <span class="built_in">return</span> value.getByteCount();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构建硬盘缓存实例</span></span><br><span class="line">    <span class="built_in">File</span> file = getDiskCacheDir(mContext,<span class="string">"photo"</span>);</span><br><span class="line">    <span class="built_in">if</span>(!file.<span class="built_in">exists</span>())</span><br><span class="line">        file.mkdirs();</span><br><span class="line">    <span class="built_in">try</span> &#123;</span><br><span class="line">        mDisLruCache = DiskLruCache.<span class="built_in">open</span>(file,getAppInfoVersion(),<span class="number">1</span>,<span class="number">10</span>*<span class="number">1024</span>*<span class="number">1024</span>);</span><br><span class="line">    &#125; <span class="built_in">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    根据传入的uniqueName获取唯一的硬盘的缓存路径</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">File</span> getDiskCacheDir(Context context, <span class="keyword">String</span> uniqueName) &#123;</span><br><span class="line">    <span class="keyword">String</span> cachePath;</span><br><span class="line">    <span class="built_in">if</span> (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())</span><br><span class="line">            || !Environment.isExternalStorageRemovable()) &#123;</span><br><span class="line">        cachePath = context.getExternalCacheDir().getPath();</span><br><span class="line">    &#125; <span class="built_in">else</span> &#123;</span><br><span class="line">        cachePath = context.getCacheDir().getPath();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="keyword">new</span> <span class="built_in">File</span>(cachePath + <span class="built_in">File</span>.separator + uniqueName);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    获取当前程序的应用版本号</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> getAppInfoVersion() &#123;</span><br><span class="line">    <span class="built_in">try</span> &#123;</span><br><span class="line">        PackageInfo info = mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">return</span> info.versionCode;</span><br><span class="line">    &#125; <span class="built_in">catch</span> (PackageManager.NameNotFoundException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在<code>init()</code>中，我们初始化了<code>okHttpClient</code>、<code>service(线程池)</code>、<code>mMemoryCache(内存缓存)</code>和<code>mDisLruCache(硬盘缓存)</code>。需要注意的是，我们在构建硬盘缓存路径的时候调用了<code>getDiskCacheDir(Context context, String uniqueName)</code>函数，这个函数给我们的程序提供了一个缓存地址。介绍完了构造函数，我们再来看一下继承自<code>RecyclerView.Adapter</code>必须要复写的三个方法：<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NonNull</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">public <span class="type">ViewHolder</span> onCreateViewHolder(<span class="meta">@NonNull</span> <span class="type">ViewGroup</span> viewGroup, int i) &#123;</span><br><span class="line">    <span class="type">View</span> root = <span class="type">LayoutInflater</span>.from(viewGroup.getContext()).inflate(<span class="type">R</span>.layout.recycle_item_net_work,viewGroup,<span class="literal">false</span>);</span><br><span class="line">    <span class="type">ViewHolder</span> viewHolder = <span class="keyword">new</span> <span class="type">ViewHolder</span>(root);</span><br><span class="line">    viewHolder.imageView = root.findViewById(<span class="type">R</span>.id.grid_photo);</span><br><span class="line">    <span class="comment">// root.setTag(urls[i]);</span></span><br><span class="line">    <span class="keyword">return</span> viewHolder;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span></span>&#123;</span><br><span class="line">    public <span class="type">ImageView</span> imageView;</span><br><span class="line">    public <span class="type">ViewHolder</span>(<span class="meta">@NonNull</span> <span class="type">View</span> itemView) &#123;</span><br><span class="line">        <span class="keyword">super</span>(itemView);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">public int getItemCount() &#123;</span><br><span class="line">    <span class="comment">// 返回路径的长度</span></span><br><span class="line">    <span class="keyword">return</span> urls.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>onCreateViewHolder()</code>和<code>getItemCount()</code>很简单，这里就不再介绍了。这边我们着重介绍<code>onBindViewHolder()</code>方法：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(@NonNull ViewHolder viewHolder, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    ImageView imageView = viewHolder.imageView;</span><br><span class="line">    String url = urls[i];</span><br><span class="line">    <span class="comment">// imageView.setTag(url);</span></span><br><span class="line">    imageView.setImageResource(R.drawable.shape_item_empty);</span><br><span class="line">    loadBitmaps(imageView, url);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在上面的函数中，我们先找到控件<code>ImageView</code>和路径<code>url</code>，在真正的搜索图片缓存之前先设置一个占位图，然后到了我们真正进行图片请求的函数<code>loadBitmaps(ImageView imageView, String url)</code>:<br><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 加载Bitmap对象，如果Bitmap不在LruCache中，就开启线程去查询</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param imageView 图片</span></span><br><span class="line"><span class="comment"> * @param url       地址</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">private <span class="keyword">void</span> loadBitmaps(ImageView imageView, <span class="built_in">String</span> <span class="built_in">url</span>) &#123;</span><br><span class="line">    Bitmap bitmap = getBitmapFromMemoryCache(<span class="built_in">url</span>);</span><br><span class="line">    <span class="keyword">if</span> (bitmap != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (imageView != <span class="literal">null</span>) &#123;</span><br><span class="line">            imageView.setImageBitmap(bitmap);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="title">else</span> &#123;</span><br><span class="line">        service.execute(<span class="keyword">new</span> ImageRunnable(<span class="built_in">url</span>,imageView));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加Bitmap到内存缓存中</span></span><br><span class="line">private <span class="keyword">void</span> addBitmapToMemoryCache(Bitmap bitmap, <span class="built_in">String</span> <span class="built_in">url</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (getBitmapFromMemoryCache(<span class="built_in">url</span>) == <span class="literal">null</span>)</span><br><span class="line">        mMemoryCache.put(<span class="built_in">url</span>, bitmap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在<code>loadBitmaps()</code>函数中，我们先从内存缓存中查找是否有该路径的缓存，有的话就直接放到我们的<code>ImageView</code>中，没有就利用我们的线程池执行一个<code>ImageRunnable</code>，我们再来看看<code>ImageRunnable</code>的代码：<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageRunnable</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Runnable</span></span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">String</span> url;</span><br><span class="line">        <span class="keyword">private</span> Bitmap bitmap;</span><br><span class="line">        <span class="keyword">private</span> ImageView mView;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> ImageRunnable(<span class="keyword">String</span> url,ImageView imageView) &#123;</span><br><span class="line">            <span class="built_in">this</span>.url = url;</span><br><span class="line">            <span class="built_in">this</span>.mView = imageView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        <span class="keyword">public</span> void run() &#123;</span><br><span class="line">            FileDescriptor fileDescriptor = <span class="literal">null</span>;</span><br><span class="line">            FileInputStream fileInputStream = <span class="literal">null</span>;</span><br><span class="line">            DiskLruCache.Snapshot snapshot = <span class="literal">null</span>;</span><br><span class="line">            <span class="comment">// 对url进行加密得到key</span></span><br><span class="line">            final <span class="keyword">String</span> key = hashKeyForDisk(url);</span><br><span class="line">            <span class="comment">// 查找key对应的硬盘缓存</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                snapshot = mDisLruCache.<span class="keyword">get</span>(key);</span><br><span class="line">                <span class="keyword">if</span> (snapshot == <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="comment">// 如果对应的硬盘缓存没找到，就开始网络请求，并且写入缓存</span></span><br><span class="line">                    DiskLruCache.Editor editor = mDisLruCache.edit(key);</span><br><span class="line">                    <span class="keyword">if</span> (editor != <span class="literal">null</span>) &#123;</span><br><span class="line">                        OutputStream outputStream = editor.<span class="keyword">new</span><span class="type">OutputStream</span>(<span class="number">0</span>);</span><br><span class="line">                        <span class="keyword">if</span> (downloadImage(url, outputStream)) &#123;</span><br><span class="line">                            editor.commit();</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            editor.abort();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    snapshot = mDisLruCache.<span class="keyword">get</span>(key);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (snapshot != <span class="literal">null</span>) &#123;</span><br><span class="line">                    fileInputStream = (FileInputStream) snapshot.getInputStream(<span class="number">0</span>);</span><br><span class="line">                    fileDescriptor = fileInputStream.getFD();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 将缓存数据解析成Bitmap对象</span></span><br><span class="line">                <span class="keyword">if</span> (fileDescriptor != <span class="literal">null</span>)</span><br><span class="line">                    bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor);</span><br><span class="line">                <span class="keyword">if</span> (bitmap != <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="comment">// 将图片添加到内存缓存中</span></span><br><span class="line">                    addBitmapToMemoryCache(bitmap, url);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (bitmap != <span class="literal">null</span>)</span><br><span class="line">                    <span class="comment">// 在主线程中更新</span></span><br><span class="line">                    mHandler.post(<span class="keyword">new</span> <span class="type">Runnable</span>() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        <span class="keyword">public</span> void run() &#123;</span><br><span class="line">                           <span class="comment">/* ImageView image = mRecyclerView.findViewWithTag(url);</span></span><br><span class="line"><span class="comment">                            if (image != null)</span></span><br><span class="line"><span class="comment">                                image.setImageBitmap(bitmap);*/</span></span><br><span class="line">                           mView.setImageBitmap(bitmap);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里的逻辑其实也比较简单，首先通过url得到我们的key，然后利用key去取我们的硬盘缓存，取不到的情况下进行网络请求，利用输出流存到我们的硬盘路径下面，最后取到我们的硬盘缓存，在主线程中更新我们的<code>ImageView</code>。不要以为我们到此就结束了，我们的下载图片<code>downloadImage(final String url, OutputStream outputStream)</code>还没有看，哈哈～<br><figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    下载图片</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> boolean downloadImage(<span class="keyword">final</span> String url, OutputStream outputStream) &#123;</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">            .url(url)</span><br><span class="line">            .build();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行操作</span></span><br><span class="line">    Call call = okHttpClient.newCall(request);</span><br><span class="line">    Response response = <span class="literal">null</span>;</span><br><span class="line">    BufferedInputStream <span class="keyword">in</span> = <span class="literal">null</span>;</span><br><span class="line">    BufferedOutputStream <span class="keyword">out</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        response = call.execute();</span><br><span class="line">        <span class="keyword">in</span> = <span class="keyword">new</span> BufferedInputStream(response.<span class="keyword">body</span>().byteStream(), <span class="number">8</span> * <span class="number">1024</span>);</span><br><span class="line">        <span class="keyword">out</span> = <span class="keyword">new</span> BufferedOutputStream(outputStream, <span class="number">8</span> * <span class="number">1024</span>);</span><br><span class="line">        <span class="keyword">int</span> b;</span><br><span class="line">        <span class="keyword">while</span> ((b = <span class="keyword">in</span>.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">out</span>.write(b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">in</span>.close();</span><br><span class="line">            <span class="keyword">out</span>.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>利用Okhttp写的同步下载图片请求，看代码就ok。我们再来回顾一下逻辑，用一张流程图概括吧：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-23ac4f071b654657.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="循环结构流程图.png"><br><strong>3. NetWorkActivity</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NetWorkActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String[] imageThumbUrls = <span class="keyword">new</span> String[]&#123;</span><br><span class="line">            <span class="comment">// 路径省略了 具体的可以看代码</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> GridPhotoAdapter mAdapter;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent(context, NetWorkActivity.class);</span><br><span class="line">        context.startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_net_work);</span><br><span class="line"></span><br><span class="line">        initWidget();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWidget</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        RecyclerView mRecyclerView = findViewById(R.id.recycle);</span><br><span class="line">        Handler mHandler = <span class="keyword">new</span> Handler(Looper.getMainLooper());</span><br><span class="line">        mRecyclerView.setLayoutManager(<span class="keyword">new</span> GridLayoutManager(<span class="keyword">this</span>, <span class="number">3</span>));</span><br><span class="line">        mRecyclerView.setAdapter(mAdapter = <span class="keyword">new</span> GridPhotoAdapter(imageThumbUrls, mHandler,<span class="keyword">this</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onPause();</span><br><span class="line">        <span class="comment">// 将日志同步到journal文件中</span></span><br><span class="line">        mAdapter.flushCache();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        <span class="comment">// 退出程序时结束所有的下载任务</span></span><br><span class="line">        mAdapter.cancelDownloadImage();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里省略了相关<code>urls</code>，代码就是写RecyclerView的通用代码，同学们可以自行查看。写完效果就出来了，如图：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-26259d372337c4f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="手机效果图.png"></p>
+<h2 id="六-总结"><a href="#六-总结" class="headerlink" title="六. 总结"></a>六. 总结</h2><p>通过以上的学习，相信同学们可以对Android图片缓存机制有了更深入的了解，本人水平有限，如有错误，欢迎指出，Over~<br><strong>地址：</strong><br><a href="https://github.com/mCyp/Test" target="_blank" rel="noopener">Demo地址</a><br><strong>引用：</strong><br><a href="https://blog.csdn.net/guolin_blog/article/details/34093441" target="_blank" rel="noopener">Android照片墙完整版，完美结合LruCache和DiskLruCache</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,26 +250,126 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">动画</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">缓存</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2019/02/14/2019-02-14-带你学习Android图片缓存机制/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">仿掌阅实现书籍打开动画</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
 
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
           </div>
         </div>
@@ -240,9 +391,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
