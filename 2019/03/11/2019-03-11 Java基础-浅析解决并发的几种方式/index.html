@@ -6,23 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java基础-浅谈关键字volatile和synchronized关键字 | Joe的博客</title>
+  <title>Java基础-浅析解决并发的几种方式 | Joe的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字volatile和 synchronized，如果不了解这些关键字，其实还是挺头疼的。">
+  <meta name="description" content="前言在上一篇中，我们讨论了Java中的关键字volatile和synchronized  Java基础-浅谈关键字volatile和synchronized  那么我们可以再想想，除了synchronized我们还有什么解决并发的方式呢？">
 <meta name="keywords" content="Java,并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础-浅谈关键字volatile和synchronized关键字">
-<meta property="og:url" content="http://yoursite.com/2019/03/06/2019-03-06-Java基础-浅谈关键字volatile和synchronized关键字/index.html">
+<meta property="og:title" content="Java基础-浅析解决并发的几种方式">
+<meta property="og:url" content="http://yoursite.com/2019/03/11/2019-03-11 Java基础-浅析解决并发的几种方式/index.html">
 <meta property="og:site_name" content="Joe的博客">
-<meta property="og:description" content="前言这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字volatile和 synchronized，如果不了解这些关键字，其实还是挺头疼的。">
+<meta property="og:description" content="前言在上一篇中，我们讨论了Java中的关键字volatile和synchronized  Java基础-浅谈关键字volatile和synchronized  那么我们可以再想想，除了synchronized我们还有什么解决并发的方式呢？">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-a17ec4587f06855e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-5c1ebf954f37c1be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-06T04:22:40.218Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-9b1590b32a93fde0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-dbd8dea70c21851a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-12T09:47:20.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础-浅谈关键字volatile和synchronized关键字">
-<meta name="twitter:description" content="前言这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字volatile和 synchronized，如果不了解这些关键字，其实还是挺头疼的。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9271486-a17ec4587f06855e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Java基础-浅析解决并发的几种方式">
+<meta name="twitter:description" content="前言在上一篇中，我们讨论了Java中的关键字volatile和synchronized  Java基础-浅谈关键字volatile和synchronized  那么我们可以再想想，除了synchronized我们还有什么解决并发的方式呢？">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9271486-9b1590b32a93fde0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -164,71 +164,62 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2019-03-06-Java基础-浅谈关键字volatile和synchronized关键字" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-2019-03-11 Java基础-浅析解决并发的几种方式" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java基础-浅谈关键字volatile和synchronized关键字
+      Java基础-浅析解决并发的几种方式
     </h1>
   
 
         
-        <a href="/2019/03/06/2019-03-06-Java基础-浅谈关键字volatile和synchronized关键字/" class="archive-article-date">
-  	<time datetime="2019-03-06T02:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
+        <a href="/2019/03/11/2019-03-11 Java基础-浅析解决并发的几种方式/" class="archive-article-date">
+  	<time datetime="2019-03-11T02:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字<code>volatile</code>和 <code>synchronized</code>，如果不了解这些关键字，其实还是挺头疼的。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在上一篇中，我们讨论了Java中的关键字<code>volatile</code>和<code>synchronized</code></p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/327daf7dff34" target="_blank" rel="noopener">Java基础-浅谈关键字volatile和synchronized</a></p>
+</blockquote>
+<p>那么我们可以再想想，除了<code>synchronized</code>我们还有什么解决并发的方式呢？</p>
 <a id="more"></a>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="https://upload-images.jianshu.io/upload_images/9271486-a17ec4587f06855e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录"></p>
-<h1 id="一-定义"><a href="#一-定义" class="headerlink" title="一. 定义"></a>一. 定义</h1><p><code>volatile</code>和<code>synchronized</code>是Java中的关键字</p>
-<h1 id="二-作用"><a href="#二-作用" class="headerlink" title="二. 作用"></a>二. 作用</h1><p>我们都知道，Java中某个线程在第一次读取共享属性之前，会从主内存中复制这个属性到线程的工作内存中，之后才会操作这个共享属性，在操作完成之后，如果共享属性的值发生了修改，则会先保存到本地的工作线程，然后才会刷新到主内存（貌似跟作用没什么关系，不过需要理解）。此外，在正式介绍这两个关键字作用之前，我觉得有必要了解三个名词：原子性、可视性和有序性<br>|  名词  | 解释                                                         |<br>| :—-: | ———————————————————— |<br>| 原子性 | <code>一个操作/一系列操作</code>要么全部执行要么都不执行                |<br>| 可视性 | 如果一个线程对一个共享值作出了一些修改，其他线程都可以看到这个共享值的修改。 |<br>| 有序性 | 程序的运行顺序要和程序的逻辑顺序一致，可能实际情况是计算机考虑到性能的因素执行顺序有所不同，但是结果肯定会跟逻辑顺序一致。 |<br>下面来介绍我们今天的主角：<br><strong>1. volatile</strong><br>对于volatile的作用，《Java核心技术卷》是这么说的：</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="https://upload-images.jianshu.io/upload_images/9271486-9b1590b32a93fde0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录"><br>除了我们目录里面，还有其他的解决并发的方式，如读写锁等，这里不作介绍。</p>
+<h1 id="一-synchronized"><a href="#一-synchronized" class="headerlink" title="一. synchronized"></a>一. synchronized</h1><p>请看我的上一篇文章，这里不再赘述。</p>
 <blockquote>
-<p>为<code>实例域的访问</code>提供了一种<code>免锁机制</code>，不提供<code>原子性</code>。</p>
+<p><a href="https://www.jianshu.com/p/327daf7dff34" target="_blank" rel="noopener">Java基础-浅谈关键字volatile和synchronized</a></p>
+<h1 id="二-锁对象"><a href="#二-锁对象" class="headerlink" title="二. 锁对象"></a>二. 锁对象</h1><p>在JDK 1.5中，出现了ReentrantLock类，为了方便使用，先看一下它的构造函数：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ReentrantLock</span><span class="params">(<span class="keyword">boolean</span> fair)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// fair代表着是否是公平锁</span></span><br><span class="line">    <span class="comment">// 1. 如果是公平锁，当获取锁的时候，先来的线程会先获取到锁</span></span><br><span class="line">    <span class="comment">// 2. 如果不是公平锁，不用排队，直接获取锁</span></span><br><span class="line">    sync = fair ? <span class="keyword">new</span> FairSync() : <span class="keyword">new</span> NonfairSync();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>首先，<code>实例域</code>说明它是用来修饰域的，如下：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> isNum = <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure></p>
-<p>其次，<code>对实例域的访问提供了免锁机制</code>说明<code>volatile</code>具有<code>可视性</code>；最后的重点就是没有原子性。《Java编程思想》中提到：</p>
-<blockquote>
-<p>所有的基础类型（除了<code>double</code>和<code>long</code>）的基础操作（读取和写入）都具有原子性，经过<code>volatile</code>修饰的<code>long</code>和<code>double</code>在基础操作中也会具有原子性。</p>
-</blockquote>
-<p>所以<code>volatile</code>除了提供可视性之外，还能够为<code>long</code>和<code>double</code>的读取和写入提供原子性，此外，<code>volatile</code>还可以保证有序性。<br><strong>2. synchronized</strong><br>在Java中，所有实例对象都自动含有单一的锁（也称监视器）。所以，当使用<code>synchronized</code>修饰的方法的时候，该方法会自动给实例加锁，这个时候，其他含<code>synchronized</code>的方法必须等到该方法调用结束并释放锁之后，该方法才能够被调用。简单来说，就是同一时间内，只能有一个线程访问 <code>synchronized</code>修饰的方法或者代码块啊，保证了原子性、有序性和可视性。</p>
-<h3 id="三-使用"><a href="#三-使用" class="headerlink" title="三. 使用"></a>三. 使用</h3><p><strong>1. volatile</strong><br><code>volatile</code>的使用比较简单：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对一个域加上volatile，域可以确保可视性和有序性</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> b;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对long和double加上volatile，可以使如下的读取和写入具有原子性。</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">long</span> a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getA</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setA</span><span class="params">(A a)</span></span>&#123; <span class="keyword">this</span>.a = a;&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>2. synchronized</strong><br>相对于<code>volatile</code>的使用，<code>synchronzied</code>的使用相对复杂一点：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> b；</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">addOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		a = a + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTwo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">			a = a + <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addThree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (Test.class) &#123;</span><br><span class="line">			b = b + <span class="number">3</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addFour</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		b = b + <span class="number">4</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>根据以上代码，我们看到<code>synchronized</code>的使用通常会分两种类型：</p>
-<ul>
-<li>对象锁，<code>synchronized</code>修饰普通方法或者在代码块中使用的当前对象，分别对应着<code>addOne()</code>和<code>addTwo()</code>方法，该方法采用的是<code>Test</code>的对象锁，只针对单个Test实例的并发问题。</li>
-<li>类锁，<code>synchronized</code>修饰静态方法或者在代码块中使用类对象，分别对应这<code>addFour()</code>和<code>addThree()</code>，这两个方法采用的是<code>Test.Class</code>的对象锁。当存在多个Test实例对象的时候，同一时间只有一个Test实例可以访问到<code>addFour()</code>方法或者<code>addThree()</code>中的代码块。</li>
-</ul>
-<p>值得注意的是，一个任务可以多次获得对象的锁，当在一个<code>synchronized</code>方法中调用同一个对象的另一个<code>synchronized</code>方法，该方法就会使得JYM跟踪的线程的持有的锁的数量加一，方法调用结束的时候，持有锁的数量就会减一，直到数字减为零，锁才会被释放。</p>
-<h3 id="四-进一步探究"><a href="#四-进一步探究" class="headerlink" title="四. 进一步探究"></a>四. 进一步探究</h3><p>在这里，我准备向各位同学浅析一下<code>volatile</code>和<code>synchronized</code>的作用。<br><strong>1.volatile</strong><br>从第二部分中，我们了解到<code>volatile</code>能够保证有序性和可视性以及为<code>double</code>和<code>long</code>的读取和写入操作的原子性，除此之外，不会保证其他操作的原子性。</p>
-<ul>
-<li>有序性：（1）当执行包含volatile的域的读操作或者写操作的时候，在其前面的操作肯定已经全部进行，且结果对后面的操作可见，在其后面的操作肯定还没有进行。（2）Java在进行指令优化的时候，不能把<code>volatile域的操作语句</code>的前面的语句放在后面执行，也不能将其后面的语句放在前面执行。</li>
-<li><p>可视性：关于可视性我们直接引用《Java编程思想》的原文</p>
-<blockquote>
-<p>只要对<code>volatile</code>域产生了写操作，那么所有的读操作都可以看到这个修改。即便使用了本地缓存，情况也确实如此，<code>volatile</code>域会被立即写入主存中，而读取操作就发生在主存中。</p>
-</blockquote>
-</li>
-<li><p>非原子性：在Java中，只有对基本类型（除了<code>long</code>和<code>double</code>，但是<code>long</code>和    <code>double</code>经<code>volatile</code>修饰后读取和写入会具有原子性）的变量的<br>读取和写入才会确保有原子性，并且不包括自增这类跟之前值相关的操作，原因如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAddOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  num++;</span><br><span class="line">  <span class="comment">// 自增包括两个步骤：</span></span><br><span class="line">  <span class="comment">// 1. 读取num的值 2. num+1 写入修改后的值</span></span><br><span class="line">  <span class="comment">// 假设线程A在读取num值的时候，被挂起，这个时候线程B读取num的值</span></span><br><span class="line">  <span class="comment">// 线程B对num进行自增，结果为1</span></span><br><span class="line">  <span class="comment">// 这个时候，线程A恢复调度，对起初读取的num的值进行自增，结果也会1</span></span><br><span class="line">  <span class="comment">// 0经过两个自增，结果仍然为1，所以说volatile域并不能保证原子性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-使用"><a href="#1-使用" class="headerlink" title="(1) 使用"></a>(1) 使用</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> ReentrantLock myLock = <span class="keyword">new</span> ReentrantLock(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doSomeThing</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 线程如果想访问锁里面的代码</span></span><br><span class="line">    <span class="comment">// 必须得先获取锁，如果锁被之前的线程还没有释放锁，那么线程就会阻塞，</span></span><br><span class="line">    <span class="comment">// 直到之前的线程释放锁</span></span><br><span class="line">    myLock.<span class="keyword">lock</span>();</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">        <span class="comment">// 处理完了记得释放锁</span></span><br><span class="line">        myLock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-注意"><a href="#2-注意" class="headerlink" title="(2) 注意"></a>(2) 注意</h3><ul>
+<li>听起来公平锁要合理的多，不过公平锁要比常规锁慢的多，通常还是不建议使用公平锁的。</li>
+<li>和<code>synchronized</code>类似，线程可以重复地获得已经持有地锁，锁会用一个持有计数来跟踪线程对<code>lock()</code>方法的嵌套调用。<h3 id="三-原子操作类"><a href="#三-原子操作类" class="headerlink" title="三. 原子操作类"></a>三. 原子操作类</h3><h2 id="1-CAS-compare-and-set"><a href="#1-CAS-compare-and-set" class="headerlink" title="1. CAS(compare and set)"></a>1. CAS(compare and set)</h2>大家应该都很熟悉<code>AtomicXXX</code>了，除了使用<code>synchronized</code>，这应该是实现原子操作最常用的一种方式。<code>AtomicXXX</code>的是一种乐观锁，每次去修改数据的时候都会认为别人没有在更新数据，等到要更新结果的时候再去比对值，确定值没有被修改的前提下再更新值。<h3 id="1-使用-1"><a href="#1-使用-1" class="headerlink" title="(1) 使用"></a>(1) 使用</h3><code>AtomicXXX</code>下面有很多种类型，比如<code>AtomicBoolean</code>、<code>AtomicLong</code>和<code>AtomicReference</code>等，这里以 <code>AtomicInteger</code>为例：<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> AtomicInteger num = <span class="keyword">new</span> AtomicInteger(<span class="number">3</span>);</span><br><span class="line">...</span><br><span class="line"><span class="comment">// observed是一个int类型的数字</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="built_in">max</span>() &#123;</span><br><span class="line">    <span class="built_in">int</span> oldValue = num.<span class="built_in">get</span>();</span><br><span class="line">    <span class="built_in">int</span> newValue = Math.<span class="built_in">max</span>(oldValue, observed);</span><br><span class="line">    num.<span class="built_in">set</span>(oldValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><strong>2. synchronized</strong><br>这里，我们就简单的讨论一下<code>synchronized</code>的执行过程吧：<br>（1）获得同步锁。<br>（2）清空工作内存。<br>（3）从主内存中复制数据副本到工作内存。<br>（4）执行代码。<br>（5）刷新数据到主内存。<br>（6）释放锁。<br>这也就是<code>synchronized</code>能够具有可视性、有序性和原子性的原因。</p>
-<h3 id="五-总结"><a href="#五-总结" class="headerlink" title="五. 总结"></a>五. 总结</h3><p><img src="https://upload-images.jianshu.io/upload_images/9271486-5c1ebf954f37c1be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="总结"></p>
-<h3 id="六-拓展"><a href="#六-拓展" class="headerlink" title="六. 拓展"></a>六. 拓展</h3><p>这里的拓展主要是其他解决并发问题的方式，将会在下篇博客讲解.</p>
+<p>你以为这样就实现原子操作了？非也非也，其实这是个错误的示范，那我们看一下正确的使用姿势：<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> AtomicInteger num = <span class="keyword">new</span> <span class="type">AtomicInteger</span>(<span class="number">3</span>);</span><br><span class="line">	</span><br><span class="line"><span class="comment">// observed是一个int类型的数字</span></span><br><span class="line"><span class="keyword">private</span> void add() &#123;</span><br><span class="line">    int oldValue,<span class="keyword">new</span><span class="type">Value</span>;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">          <span class="comment">// 1. 先获取旧的值</span></span><br><span class="line">          <span class="comment">// 2. 比较大小</span></span><br><span class="line">          <span class="comment">// 3. 检查num是否发生过更改</span></span><br><span class="line">          <span class="comment">// 4. 如果num发生变化，就意味着我们的操作失败，重复执行如上1-3操作</span></span><br><span class="line">          <span class="comment">// 5. 如果num没发生变化，就更新当前的值</span></span><br><span class="line">	  oldValue = num.<span class="keyword">get</span>();</span><br><span class="line">	  <span class="keyword">new</span><span class="type">Value</span> = Math.max(oldValue, observed);</span><br><span class="line">    &#125;<span class="keyword">while</span>(!num.compareAndSet(oldValue, <span class="keyword">new</span><span class="type">Value</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-注意-1"><a href="#2-注意-1" class="headerlink" title="(2) 注意"></a>(2) 注意</h3><p>相比<code>synchronized</code>和<code>ReentrantLock</code>，乐观锁会减去线程挂起和恢复的开销，提升系统的运行效率。当然了，乐观锁也会有缺点，当线程的并发数量上来的时候，大量的线程操作相同的原子值，乐观更新的失败几率比较高，可能需要重复多次，因此，乐观锁适用于多读的系统。</p>
+<h2 id="2-Java-8新增的xxxAdder和xxxAccumulator"><a href="#2-Java-8新增的xxxAdder和xxxAccumulator" class="headerlink" title="2. Java 8新增的xxxAdder和xxxAccumulator"></a>2. Java 8新增的xxxAdder和xxxAccumulator</h2><p>Java 8新增的这些原子操作类就是为了解决上述乐观锁的并发问题的</p>
+<h3 id="1-使用-2"><a href="#1-使用-2" class="headerlink" title="(1) 使用"></a>(1) 使用</h3><p><code>LongAdder</code>是以<code>LongAccumulator</code>为基础的，<code>LongAdder</code>只能使用累加，并且初始值只能设置为0，相比之下，<code>LongAccumulator</code>可以实现更复杂的运算和设置初始值。这里以<code>LongAccumulator</code>为例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先自定义实现LongBinaryOperator</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyOp</span> <span class="keyword">implements</span> <span class="title">LongBinaryOperator</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">applyAsLong</span><span class="params">(<span class="keyword">long</span> left, <span class="keyword">long</span> right)</span> </span>&#123;</span><br><span class="line">	  <span class="keyword">return</span> left + right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一个参数是处理自定义实现的处理方法</span></span><br><span class="line"><span class="comment">// 第二个参数就是LongAccumulator累加器的初始值</span></span><br><span class="line"><span class="keyword">private</span> LongAccumulator num = <span class="keyword">new</span> LongAccumulator(<span class="keyword">new</span> MyOp(), <span class="number">2</span>);</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> observed)</span> </span>&#123;</span><br><span class="line">    num.accumulate(observed);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-使用场景"><a href="#2-使用场景" class="headerlink" title="(2) 使用场景"></a>(2) 使用场景</h3><p>我们来看一下《Java核心技术卷》是怎么说的：</p>
 <blockquote>
-<p>TODO</p>
+<p>LongAdder包括多个变量（加数），其总和为当前值。可以有多个线程更新不同的加数，线程个数增加时会自动提供新的加数。通常情况下，只有当所有工作都完成之后才需要总和的值，对于这种情况，这种方法会很高效。</p>
 </blockquote>
-<h3 id="七-引用"><a href="#七-引用" class="headerlink" title="七. 引用"></a>七. 引用</h3><p>本人水平有限，难免会有错误，如有错误，欢迎各位同学指出～<br>如下是本人的参考：</p>
+<p>因此，<code>LongAdder</code>和<code>LongAccumulator</code>适合高并发下的计数问题。</p>
+<h3 id="3-注意"><a href="#3-注意" class="headerlink" title="(3) 注意"></a>(3) 注意</h3><p>看到这里，你可能会有这样的想法，<code>XXXAdder</code>和<code>XXXAccumulator</code>这么厉害了，是不是意味着我们可以抛弃<code>AtomicXXX</code>了？当然不可能，<code>XXXAdder</code>和<code>XXXAccumulator</code>只适合高并发下的计数问题，除此之外，<code>LongAccumulator</code><br>也使用了<code>CAS</code>的方式处理数据。</p>
+<h1 id="四-总结"><a href="#四-总结" class="headerlink" title="四. 总结"></a>四. 总结</h1><p><img src="https://upload-images.jianshu.io/upload_images/9271486-dbd8dea70c21851a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="总结"><br>总结得出来的使用技巧是：</p>
 <ol>
-<li>书籍：《Java核心技术卷》《Java编程思想》</li>
-<li>博客：<br><a href="https://www.jianshu.com/p/2ed498b43628" target="_blank" rel="noopener">Java：手把手教你全面学习神秘的Synchronized关键字</a><br><a href="https://www.jianshu.com/p/31e5ab16935f" target="_blank" rel="noopener">Java：鲜为人知的关键字volatile</a><br><a href="https://segmentfault.com/q/1010000015787014" target="_blank" rel="noopener"> java本地内存什么时候刷新到主内存中去</a></li>
+<li>优先考虑<code>synchronized</code>，需要性能调优的时候考虑<code>Lock</code>。</li>
+<li>优先使用传统的互斥方式，当性能方面的需求有明确指示的时候，考虑<code>Atomic</code>。</li>
+<li>高并发计数优先考虑<code>XXXAdder</code>和<code>XXXAccumulator</code>。</li>
 </ol>
+<p>本人水平有限，难免会有错误，如有错误，欢迎提出。<br>Over~</p>
+<p><strong>引用</strong><br><a href="https://www.jianshu.com/writer#/notebooks/19352650/notes/42558601/preview" target="_blank" rel="noopener">浅析LongAdder</a></p>
 
       
 
@@ -302,7 +293,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2019/03/06/2019-03-06-Java基础-浅谈关键字volatile和synchronized关键字/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2019/03/11/2019-03-11 Java基础-浅析解决并发的几种方式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -317,8 +308,8 @@ var _hmt = _hmt || [];
 <nav id="article-nav">
   
   
-    <a href="/2019/02/14/2019-02-14-带你学习Android图片缓存机制/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">带你学习Android图片缓存机制</div>
+    <a href="/2019/03/06/2019-03-06-Java基础-浅谈关键字volatile和synchronized/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java基础-浅谈关键字volatile和synchronized关键字</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -473,11 +464,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">动画</a>
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">动画</a>
               </li>
              
               <li class="article-tag-list-item">
