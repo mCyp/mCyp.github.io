@@ -120,17 +120,18 @@ public void doAddOne() {
 ### 五. 总结
 ![总结](https://upload-images.jianshu.io/upload_images/9271486-5c1ebf954f37c1be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ### 六. 拓展
-这里的拓展主要是其他解决并发问题的方式，将会在下篇博客讲解.
-> TODO
+其他解决并发的方式：
+
+> [Java基础-浅析解决并发的几种方式](https://www.jianshu.com/p/ce1dc6cfe919)
 
 ### 七. 引用
 本人水平有限，难免会有错误，如有错误，欢迎各位同学指出～
 如下是本人的参考：
 1. 书籍：《Java核心技术卷》《Java编程思想》
 2. 博客：
-  [Java：手把手教你全面学习神秘的Synchronized关键字](https://www.jianshu.com/p/2ed498b43628)
-  [Java：鲜为人知的关键字volatile](https://www.jianshu.com/p/31e5ab16935f)
-  [ java本地内存什么时候刷新到主内存中去](https://segmentfault.com/q/1010000015787014)
+    [Java：手把手教你全面学习神秘的Synchronized关键字](https://www.jianshu.com/p/2ed498b43628)
+    [Java：鲜为人知的关键字volatile](https://www.jianshu.com/p/31e5ab16935f)
+    [ java本地内存什么时候刷新到主内存中去](https://segmentfault.com/q/1010000015787014)
 
 
 
