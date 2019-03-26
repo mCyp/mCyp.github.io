@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-a17ec4587f06855e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-5c1ebf954f37c1be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-12T09:45:11.114Z">
+<meta property="og:updated_time" content="2019-03-26T10:03:23.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础-浅谈关键字volatile和synchronized关键字">
 <meta name="twitter:description" content="前言这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字volatile和 synchronized，如果不了解这些关键字，其实还是挺头疼的。">
@@ -184,11 +184,11 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字<code>volatile</code>和 <code>synchronized</code>，如果不了解这些关键字，其实还是挺头疼的。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字<code>volatile</code>和 <code>synchronized</code>，如果不了解这些关键字，其实还是挺头疼的。</p>
 <a id="more"></a>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="https://upload-images.jianshu.io/upload_images/9271486-a17ec4587f06855e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录"></p>
-<h1 id="一-定义"><a href="#一-定义" class="headerlink" title="一. 定义"></a>一. 定义</h1><p><code>volatile</code>和<code>synchronized</code>是Java中的关键字</p>
-<h1 id="二-作用"><a href="#二-作用" class="headerlink" title="二. 作用"></a>二. 作用</h1><p>我们都知道，Java中某个线程在第一次读取共享属性之前，会从主内存中复制这个属性到线程的工作内存中，之后才会操作这个共享属性，在操作完成之后，如果共享属性的值发生了修改，则会先保存到本地的工作线程，然后才会刷新到主内存（貌似跟作用没什么关系，不过需要理解）。此外，在正式介绍这两个关键字作用之前，我觉得有必要了解三个名词：原子性、可视性和有序性<br>|  名词  | 解释                                                         |<br>| :—-: | ———————————————————— |<br>| 原子性 | <code>一个操作/一系列操作</code>要么全部执行要么都不执行                |<br>| 可视性 | 如果一个线程对一个共享值作出了一些修改，其他线程都可以看到这个共享值的修改。 |<br>| 有序性 | 程序的运行顺序要和程序的逻辑顺序一致，可能实际情况是计算机考虑到性能的因素执行顺序有所不同，但是结果肯定会跟逻辑顺序一致。 |<br>下面来介绍我们今天的主角：<br><strong>1. volatile</strong><br>对于volatile的作用，《Java核心技术卷》是这么说的：</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><img src="https://upload-images.jianshu.io/upload_images/9271486-a17ec4587f06855e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录"></p>
+<h2 id="一-定义"><a href="#一-定义" class="headerlink" title="一. 定义"></a>一. 定义</h2><p><code>volatile</code>和<code>synchronized</code>是Java中的关键字</p>
+<h2 id="二-作用"><a href="#二-作用" class="headerlink" title="二. 作用"></a>二. 作用</h2><p>我们都知道，Java中某个线程在第一次读取共享属性之前，会从主内存中复制这个属性到线程的工作内存中，之后才会操作这个共享属性，在操作完成之后，如果共享属性的值发生了修改，则会先保存到本地的工作线程，然后才会刷新到主内存（貌似跟作用没什么关系，不过需要理解）。此外，在正式介绍这两个关键字作用之前，我觉得有必要了解三个名词：原子性、可视性和有序性<br>|  名词  | 解释                                                         |<br>| :—-: | ———————————————————— |<br>| 原子性 | <code>一个操作/一系列操作</code>要么全部执行要么都不执行                |<br>| 可视性 | 如果一个线程对一个共享值作出了一些修改，其他线程都可以看到这个共享值的修改。 |<br>| 有序性 | 程序的运行顺序要和程序的逻辑顺序一致，可能实际情况是计算机考虑到性能的因素执行顺序有所不同，但是结果肯定会跟逻辑顺序一致。 |<br>下面来介绍我们今天的主角：<br><strong>1. volatile</strong><br>对于volatile的作用，《Java核心技术卷》是这么说的：</p>
 <blockquote>
 <p>为<code>实例域的访问</code>提供了一种<code>免锁机制</code>，不提供<code>原子性</code>。</p>
 </blockquote>
@@ -198,7 +198,8 @@ var _hmt = _hmt || [];
 <p>所有的基础类型（除了<code>double</code>和<code>long</code>）的基础操作（读取和写入）都具有原子性，经过<code>volatile</code>修饰的<code>long</code>和<code>double</code>在基础操作中也会具有原子性。</p>
 </blockquote>
 <p>所以<code>volatile</code>除了提供可视性之外，还能够为<code>long</code>和<code>double</code>的读取和写入提供原子性，此外，<code>volatile</code>还可以保证有序性。<br><strong>2. synchronized</strong><br>在Java中，所有实例对象都自动含有单一的锁（也称监视器）。所以，当使用<code>synchronized</code>修饰的方法的时候，该方法会自动给实例加锁，这个时候，其他含<code>synchronized</code>的方法必须等到该方法调用结束并释放锁之后，该方法才能够被调用。简单来说，就是同一时间内，只能有一个线程访问 <code>synchronized</code>修饰的方法或者代码块啊，保证了原子性、有序性和可视性。</p>
-<h3 id="三-使用"><a href="#三-使用" class="headerlink" title="三. 使用"></a>三. 使用</h3><p><strong>1. volatile</strong><br><code>volatile</code>的使用比较简单：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对一个域加上volatile，域可以确保可视性和有序性</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> b;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对long和double加上volatile，可以使如下的读取和写入具有原子性。</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">long</span> a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getA</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setA</span><span class="params">(A a)</span></span>&#123; <span class="keyword">this</span>.a = a;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="三-使用"><a href="#三-使用" class="headerlink" title="三. 使用"></a>三. 使用</h2><p><strong>1. volatile</strong><br><code>volatile</code>的使用比较简单：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对一个域加上volatile，域可以确保可视性和有序性</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> b;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对long和double加上volatile，可以使如下的读取和写入具有原子性。</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">long</span> a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getA</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setA</span><span class="params">(A a)</span></span>&#123; <span class="keyword">this</span>.a = a;&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>2. synchronized</strong><br>相对于<code>volatile</code>的使用，<code>synchronzied</code>的使用相对复杂一点：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> b；</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">addOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		a = a + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTwo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">			a = a + <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addThree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (Test.class) &#123;</span><br><span class="line">			b = b + <span class="number">3</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addFour</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		b = b + <span class="number">4</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>根据以上代码，我们看到<code>synchronized</code>的使用通常会分两种类型：</p>
 <ul>
@@ -206,7 +207,7 @@ var _hmt = _hmt || [];
 <li>类锁，<code>synchronized</code>修饰静态方法或者在代码块中使用类对象，分别对应这<code>addFour()</code>和<code>addThree()</code>，这两个方法采用的是<code>Test.Class</code>的对象锁。当存在多个Test实例对象的时候，同一时间只有一个Test实例可以访问到<code>addFour()</code>方法或者<code>addThree()</code>中的代码块。</li>
 </ul>
 <p>值得注意的是，一个任务可以多次获得对象的锁，当在一个<code>synchronized</code>方法中调用同一个对象的另一个<code>synchronized</code>方法，该方法就会使得JYM跟踪的线程的持有的锁的数量加一，方法调用结束的时候，持有锁的数量就会减一，直到数字减为零，锁才会被释放。</p>
-<h3 id="四-进一步探究"><a href="#四-进一步探究" class="headerlink" title="四. 进一步探究"></a>四. 进一步探究</h3><p>在这里，我准备向各位同学浅析一下<code>volatile</code>和<code>synchronized</code>的作用。<br><strong>1.volatile</strong><br>从第二部分中，我们了解到<code>volatile</code>能够保证有序性和可视性以及为<code>double</code>和<code>long</code>的读取和写入操作的原子性，除此之外，不会保证其他操作的原子性。</p>
+<h2 id="四-进一步探究"><a href="#四-进一步探究" class="headerlink" title="四. 进一步探究"></a>四. 进一步探究</h2><p>在这里，我准备向各位同学浅析一下<code>volatile</code>和<code>synchronized</code>的作用。<br><strong>1.volatile</strong><br>从第二部分中，我们了解到<code>volatile</code>能够保证有序性和可视性以及为<code>double</code>和<code>long</code>的读取和写入操作的原子性，除此之外，不会保证其他操作的原子性。</p>
 <ul>
 <li>有序性：（1）当执行包含volatile的域的读操作或者写操作的时候，在其前面的操作肯定已经全部进行，且结果对后面的操作可见，在其后面的操作肯定还没有进行。（2）Java在进行指令优化的时候，不能把<code>volatile域的操作语句</code>的前面的语句放在后面执行，也不能将其后面的语句放在前面执行。</li>
 <li><p>可视性：关于可视性我们直接引用《Java编程思想》的原文</p>
@@ -219,12 +220,12 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p><strong>2. synchronized</strong><br>这里，我们就简单的讨论一下<code>synchronized</code>的执行过程吧：<br>（1）获得同步锁。<br>（2）清空工作内存。<br>（3）从主内存中复制数据副本到工作内存。<br>（4）执行代码。<br>（5）刷新数据到主内存。<br>（6）释放锁。<br>这也就是<code>synchronized</code>能够具有可视性、有序性和原子性的原因。</p>
-<h3 id="五-总结"><a href="#五-总结" class="headerlink" title="五. 总结"></a>五. 总结</h3><p><img src="https://upload-images.jianshu.io/upload_images/9271486-5c1ebf954f37c1be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="总结"></p>
-<h3 id="六-拓展"><a href="#六-拓展" class="headerlink" title="六. 拓展"></a>六. 拓展</h3><p>其他解决并发的方式：</p>
+<h2 id="五-总结"><a href="#五-总结" class="headerlink" title="五. 总结"></a>五. 总结</h2><p><img src="https://upload-images.jianshu.io/upload_images/9271486-5c1ebf954f37c1be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="总结"></p>
+<h2 id="六-拓展"><a href="#六-拓展" class="headerlink" title="六. 拓展"></a>六. 拓展</h2><p>其他解决并发的方式：</p>
 <blockquote>
 <p><a href="https://www.jianshu.com/p/ce1dc6cfe919" target="_blank" rel="noopener">Java基础-浅析解决并发的几种方式</a></p>
 </blockquote>
-<h3 id="七-引用"><a href="#七-引用" class="headerlink" title="七. 引用"></a>七. 引用</h3><p>本人水平有限，难免会有错误，如有错误，欢迎各位同学指出～<br>如下是本人的参考：</p>
+<h2 id="七-引用"><a href="#七-引用" class="headerlink" title="七. 引用"></a>七. 引用</h2><p>本人水平有限，难免会有错误，如有错误，欢迎各位同学指出～<br>如下是本人的参考：</p>
 <ol>
 <li>书籍：《Java核心技术卷》《Java编程思想》</li>
 <li>博客：<br> <a href="https://www.jianshu.com/p/2ed498b43628" target="_blank" rel="noopener">Java：手把手教你全面学习神秘的Synchronized关键字</a><br> <a href="https://www.jianshu.com/p/31e5ab16935f" target="_blank" rel="noopener">Java：鲜为人知的关键字volatile</a><br> <a href="https://segmentfault.com/q/1010000015787014" target="_blank" rel="noopener"> java本地内存什么时候刷新到主内存中去</a></li>
@@ -487,6 +488,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">动画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">布局</a>
               </li>
              
               <li class="article-tag-list-item">
