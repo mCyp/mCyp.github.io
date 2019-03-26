@@ -6,19 +6,38 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/12 | Joe的博客</title>
+  <title>ConstraintLayout使用指南 | Joe的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
-<meta name="keywords" content="Android,kotlin,java,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joe的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/12/index.html">
+  <meta name="description" content="ConstraintLayout是2016年Google的I/O大会推出的新型布局-约束布局，话说，今年都2019了，ConstraintLayout应该早就被Android工程师熟识了。不过，前几天在群里闲聊的时候，还有人在问：ConstraintLayout好用吗？因此，打算写一篇ConstraintLayout使用总结。">
+<meta name="keywords" content="Android,布局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ConstraintLayout使用指南">
+<meta property="og:url" content="http://yoursite.com/2019/03/20/2019-03-20 ConstraintLayout使用指南/index.html">
 <meta property="og:site_name" content="Joe的博客">
-<meta property="og:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta property="og:description" content="ConstraintLayout是2016年Google的I/O大会推出的新型布局-约束布局，话说，今年都2019了，ConstraintLayout应该早就被Android工程师熟识了。不过，前几天在群里闲聊的时候，还有人在问：ConstraintLayout好用吗？因此，打算写一篇ConstraintLayout使用总结。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-f78f1140e91d0fd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-d3dbb9d92a4c366f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-7eeab285f9800fd1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-5280159f516d1227.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-3de42b3303493acc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-55952a9c96e2e64b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-d34c0dc2add176ca.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-b46c0cf587119fed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-42765eab507b1a6b.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-36da0244b46d715c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-17496b9b6dc52a49.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-c57b1128a4b545a5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-fe21f14dc464d48f.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-2c0b012117a3ce7f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-5e66d03342f5ce55.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-b0d73416b13700f8.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-9b04c9d60b693c88.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2019-03-26T09:59:56.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Joe的博客">
-<meta name="twitter:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta name="twitter:title" content="ConstraintLayout使用指南">
+<meta name="twitter:description" content="ConstraintLayout是2016年Google的I/O大会推出的新型布局-约束布局，话说，今年都2019了，ConstraintLayout应该早就被Android工程师熟识了。不过，前几天在群里闲聊的时候，还有人在问：ConstraintLayout好用吗？因此，打算写一篇ConstraintLayout使用总结。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9271486-f78f1140e91d0fd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -160,74 +179,97 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2019-03-20 ConstraintLayout使用指南" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/31/2018-12-31-新年总结/" class="archive-article-date">
-  	<time datetime="2018-12-31T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/31/2018-12-31-新年总结/">2018年度总结</a>
+    <h1 class="article-title" itemprop="name">
+      ConstraintLayout使用指南
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/16/2018-12-16-PhotoPagerView/" class="archive-article-date">
-  	<time datetime="2018-12-16T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
+        
+        <a href="/2019/03/20/2019-03-20 ConstraintLayout使用指南/" class="archive-article-date">
+  	<time datetime="2019-03-20T02:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/16/2018-12-16-PhotoPagerView/">造一个轮子-PhotoPagerView</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>ConstraintLayout</code>是2016年Google的I/O大会推出的新型布局-约束布局，话说，今年都2019了，<code>ConstraintLayout</code>应该早就被Android工程师熟识了。不过，前几天在群里闲聊的时候，还有人在问：<code>ConstraintLayout</code>好用吗？因此，打算写一篇<code>ConstraintLayout</code>使用总结。</p>
+<a id="more"></a>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><img src="https://upload-images.jianshu.io/upload_images/9271486-f78f1140e91d0fd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录"></p>
+<h2 id="一-定义"><a href="#一-定义" class="headerlink" title="一. 定义"></a>一. 定义</h2><p>关于这点，我们先看谷歌的官方文档吧：</p>
+<blockquote>
+<p>A <code>ConstraintLayout</code> is a ViewGroup which allows you to position and size widgets in a flexible way.</p>
+</blockquote>
+<p>换成中文就是<code>ConstraintLayout</code>可以灵活的设置其他控件的大小和位置。为什么说灵活呢？因为它可以不用写代码，使用鼠标操控就可以直接实现我们的界面，关于直接使用鼠标操作界面的方式，这里我就不再赘述了，请移步郭神的<a href="https://blog.csdn.net/guolin_blog/article/details/53122387" target="_blank" rel="noopener">Android新特性介绍，ConstraintLayout完全解析</a>，本文将侧重用代码讲解<code>ConstraintLayout</code>，因为<code>ConstraintLayout</code>本身使用好了就可以减少布局的嵌套。<br><strong>导入库</strong><br>我们在正式介绍之前，先在<code>build.gradle</code>文件中添加如下：<br><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="symbol">'com</span>.android.support.<span class="keyword">constraint</span>:<span class="keyword">constraint</span>-layout:<span class="number">1.1</span>.<span class="number">2</span><span class="string">'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="二-属性介绍"><a href="#二-属性介绍" class="headerlink" title="二. 属性介绍"></a>二. 属性介绍</h2><p>这里我们先学习一下属性的使用，从基础属性开始吧。如果我直接讲这个属性有什么用可能不是特别清楚，这里我会将这些基础的属性和同类型的<code>RelativeLayout</code>属性进行比较：<br>| ConstraintLayout |              RelativeLayout              | 作用                   |<br>| :————–: | :————————————–: | ———————- |<br>|                  |     <code>layout_constraintLeft_toLeftOf</code>     | <code>layout_alignLeft</code>     |<br>|                  |    <code>layout_constraintLeft_toRightOf</code>    | <code>layout_toRightOf</code>    |<br>|                  |   <code>layout_constraintRight_toRightOf</code>    | <code>layout_alignRight</code>    |<br>|                  |    <code>layout_constraintRight_toLeftOf</code>    | <code>layout_toLeftOf</code>      |<br>|                  |      <code>layout_constraintTop_toTopOf</code>      | <code>layout_alignTop</code>      |<br>|                  |    <code>layout_constraintTop_toBottomOf</code>     | <code>layout_below</code>         |<br>|                  |  <code>layout_constraintBottom_toBottomOf</code>   | <code>layout_alignBottom</code>   |<br>|                  |    <code>layout_constraintBottom_toTopOf</code>     | <code>layout_above</code>         |<br>|                  | <code>layout_constraintBaseline_toBaselineOf</code> | <code>layout_alignBaseline</code> |<br>对于和left、right相似的start、end基础的属性，这里不再赘述，大家可以自行查阅。当然了，除了一些基础的属性，<code>ConstraintLayout</code>也有自己特有的属性，这里向大家介绍一下常用的属性：</p>
+<h3 id="1-bias（偏移量）"><a href="#1-bias（偏移量）" class="headerlink" title="1. bias（偏移量）"></a>1. bias（偏移量）</h3><p>长度和高度的偏移量<br>|                属性                | 介绍                     |<br>| :——————————–: | ———————— |<br>| <code>layout_constraintHorizontal_bias</code> | 水平方向的偏移量（小数） |<br>|  <code>layout_constraintVertical_bias</code>  | 竖直方向的偏移量（小数） |</p>
+<h3 id="2-Circular-positioning（圆形定位）"><a href="#2-Circular-positioning（圆形定位）" class="headerlink" title="2. Circular positioning（圆形定位）"></a>2. Circular positioning（圆形定位）</h3><p>以一个控件为圆心设置角度和半径定位<br>|              属性               | 介绍                                                         |<br>| :—————————–: | ———————————————————— |<br>|    <code>layout_constraintCircle</code>    | 关联另一个控件，将另一个控件放置在自己圆的半径上，会和下面两个属性一起使用 |<br>| <code>layout_constraintCircleRadius</code> | 圆的半径                                                     |<br>| <code>layout_constraintCircleAngle</code> | 圆的角度                                                     |</p>
+<h3 id="3-Percent-dimension（百分比布局）"><a href="#3-Percent-dimension（百分比布局）" class="headerlink" title="3. Percent dimension（百分比布局）"></a>3. Percent dimension（百分比布局）</h3><p>宽高设置百分比长度<br>|                属性                | 介绍                                                         |<br>| :——————————–: | ———————————————————— |<br>| <code>layout_constraintWidth_default</code>  | 宽度类型设置，可以设置<code>percent</code>、<code>spread</code>和<code>wrap</code>            |<br>| <code>layout_constraintHeight_default</code> | 高度类型设置，同上                                           |<br>| <code>layout_constraintWidth_percent</code>  | 如果<code>layout_constraintWidth_percent</code>设置的百分比，这里设置小数，为占父布局宽度的多少 |<br>| <code>layout_constraintHeight_percent</code> | 设置高度的大小，同上                                         |</p>
+<h3 id="4-Ratio（比例）"><a href="#4-Ratio（比例）" class="headerlink" title="4. Ratio（比例）"></a>4. Ratio（比例）</h3><p>控件的宽和高设置一定比例<br>|                属性                | 介绍   |<br>| :——————————–: | —— |<br>| <code>layout_constraintDimensionRatio</code> | 宽高比 |</p>
+<h3 id="5-Chain-Style（约束链类型）"><a href="#5-Chain-Style（约束链类型）" class="headerlink" title="5. Chain Style（约束链类型）"></a>5. Chain Style（约束链类型）</h3><p>设置约束链类型，约束链类型包括：<code>spread</code>，<code>spread_inside</code>和<code>packed</code><br>|                   属性                    | 介绍       |<br>| :—————————————: | ———- |<br>| <code>layout_constraintHorizontal_chainStyle</code> | 横向约束链 |<br>|  <code>layout_constraintVertical_chainStyle</code>  | 纵向约束链 |</p>
+<h2 id="三-具体使用"><a href="#三-具体使用" class="headerlink" title="三. 具体使用"></a>三. 具体使用</h2><p>终于到我们的实战环节了</p>
+<h3 id="1-基础属性的使用"><a href="#1-基础属性的使用" class="headerlink" title="1. 基础属性的使用"></a>1. 基础属性的使用</h3><p>先从设置高度和宽度设置开始吧</p>
+<h6 id="1-1-宽度和高度的设置"><a href="#1-1-宽度和高度的设置" class="headerlink" title="1.1 宽度和高度的设置"></a>1.1 宽度和高度的设置</h6><p>同普通的控件一样，<code>layout_width</code>和<code>layout_height</code>可以设置如下：</p>
+<ul>
+<li>具体的值，例如<code>123dp</code></li>
+<li><code>wrap_content</code>，让控件计算出适合自己的大小</li>
+<li><code>0dp</code>，等价与<code>match_parent</code></li>
+</ul>
+<p>具体的值和<code>wrap_content</code>这里我就不再多介绍了，大家平时用的不少。唯一有区别的是<code>0dp</code>这个概念，<code>LinearLayout</code>中我们会设置<code>layout_width</code>为<code>0dp</code>，然后搭配<code>layout_weight</code>一起使用，那么我们来看看<code>ConstraintLayout</code>如何使用：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;android<span class="selector-class">.support</span><span class="selector-class">.constraint</span><span class="selector-class">.ConstraintLayout</span> xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_beauty"</span></span><br><span class="line">        app:layout_constraintTop_toTopOf=<span class="string">"parent"</span></span><br><span class="line">        app:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/beauty"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"0dp"</span> /&gt;</span><br><span class="line">&lt;/android<span class="selector-class">.support</span><span class="selector-class">.constraint</span><span class="selector-class">.ConstraintLayout</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>我们将高度设置为<code>0dp</code>，看看会发生什么？<br><img src="https://upload-images.jianshu.io/upload_images/9271486-d3dbb9d92a4c366f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="高度为0dp">与一般布局不一样的是，<code>ImageView</code>的高度相当于整个屏幕的高度，等价于<code>match_parent</code>。<code>0dp</code>完全等价于<code>match_parent</code>其实也不一定完全对，我们再来看一下另外一段代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">android.support.constraint.ConstraintLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- iv_beauty宽100高200，放在左上角 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/iv_beauty"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"100dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"200dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:scaleType</span>=<span class="string">"centerCrop"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:src</span>=<span class="string">"@drawable/beauty"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"parent"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- iv_girl宽100高0，放在iv_beauty右边，下面与iv_beauty对齐--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/iv_girl"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"100dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:scaleType</span>=<span class="string">"centerCrop"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:src</span>=<span class="string">"@drawable/girl"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"@+id/iv_beauty"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintLeft_toRightOf</span>=<span class="string">"@+id/iv_beauty"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"parent"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.constraint.ConstraintLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-7eeab285f9800fd1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="高度为0dp">其实可以看出，<code>0dp</code>也会受各种约束条件限制，在约束条件内占满整个距离。</p>
+<h6 id="1-2-父布局右边"><a href="#1-2-父布局右边" class="headerlink" title="1.2 父布局右边"></a>1.2 父布局右边</h6><p>以<code>ImageView</code>为例，如果我想将<code>ImageView</code>放在父布局的右边，这时我们需要将<code>layout_constraintRight_toRightOf</code>的值设置为<code>parent</code>，代码如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;android<span class="selector-class">.support</span><span class="selector-class">.constraint</span><span class="selector-class">.ConstraintLayout</span> xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_beauty"</span></span><br><span class="line">        app:layout_constraintRight_toRightOf=<span class="string">"parent"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/beauty"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"200dp"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android<span class="selector-class">.support</span><span class="selector-class">.constraint</span><span class="selector-class">.ConstraintLayout</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-5280159f516d1227.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="父布局右边">这个时候你可能会问，如果我想放在父布局左边，是不是只添加<code>app:layout_constraintLeft_toLeftOf=&quot;parent&quot;</code>就对了？聪明！答对了，同理，<code>app:layout_constraintTop_toTopOf=&quot;parent&quot;</code>代表放在父布局上边，<code>app:layout_constraintBottom_toBottomOf=&quot;parent&quot;</code>代表放在父布局下边，这里不再赘述。</p>
+<h6 id="1-3-父布局居中"><a href="#1-3-父布局居中" class="headerlink" title="1.3 父布局居中"></a>1.3 父布局居中</h6><p>这个时候，小王同学问了：如果我同时将<code>app:layout_constraintRight_toRightOf=&quot;parent&quot;</code>、<code>app:layout_constraintLeft_toLeftOf=&quot;parent&quot;</code>、<code>app:layout_constraintTop_toTopOf=&quot;parent&quot;</code>和<code>app:layout_constraintBottom_toBottomOf=&quot;parent&quot;</code>都加上会怎么样呢？代码如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;android<span class="selector-class">.support</span><span class="selector-class">.constraint</span><span class="selector-class">.ConstraintLayout</span> xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_beauty"</span></span><br><span class="line">        app:layout_constraintBottom_toBottomOf=<span class="string">"parent"</span></span><br><span class="line">        app:layout_constraintTop_toTopOf=<span class="string">"parent"</span></span><br><span class="line">        app:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        app:layout_constraintRight_toRightOf=<span class="string">"parent"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/beauty"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"200dp"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android<span class="selector-class">.support</span><span class="selector-class">.constraint</span><span class="selector-class">.ConstraintLayout</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-3de42b3303493acc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="父布局居中">我们的<code>ImageView</code>居中了，没错，如果添加<code>app:layout_constraintRight_toRightOf=&quot;parent&quot;</code>和<code>app:layout_constraintLeft_toLeftOf=&quot;parent&quot;</code>会水平居中，添加<code>app:layout_constraintLeft_toLeftOf=&quot;parent&quot;</code>和<code>app:layout_constraintRight_toRightOf=&quot;parent&quot;</code>会竖直居中，全部添加就是水平和竖直方向都居中。</p>
+<h3 id="2-bias（偏移量）"><a href="#2-bias（偏移量）" class="headerlink" title="2. bias（偏移量）"></a>2. bias（偏移量）</h3><p>如果我想<code>ImageView</code>相对于父布局左边间隔<code>1/10</code>个父布局长度，相对于父布局上边间隔<code>2/10</code>个父布局高度，我们该怎实现呢？看代码：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.<span class="keyword">constraint</span>.ConstraintLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:<span class="keyword">app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_beauty"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintHorizontal_bias=<span class="string">"0.1"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintVertical_bias=<span class="string">"0.2"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintTop_toTopOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintBottom_toBottomOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintRight_toRightOf=<span class="string">"parent"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/beauty"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"200dp"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.<span class="keyword">constraint</span>.ConstraintLayout&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-55952a9c96e2e64b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bias"><br><code>app:layout_constraintHorizontal_bias=&quot;0.1&quot;</code>代表水平方向往右偏移10%，<code>app:layout_constraintVertical_bias=&quot;0.2&quot;</code>代表竖直方向往下偏移20%。<br>这里需要注意的是：</p>
+<ul>
+<li>想要设置偏移，必须先将控件设置父布局居中。</li>
+<li>偏移的长度，如横向的偏移，是父布局宽度减去<code>ImageView</code>宽度的剩下的10%<h3 id="3-Percent-dimension"><a href="#3-Percent-dimension" class="headerlink" title="3. Percent dimension"></a>3. Percent dimension</h3>如果我们想将<code>ImageView</code>的宽度设置为父布局宽度的70%，这个时候我们就可以考虑使用百分比属性了，代码如下：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;android<span class="selector-class">.support</span><span class="selector-class">.constraint</span><span class="selector-class">.ConstraintLayout</span> xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_beauty"</span></span><br><span class="line">        app:layout_constraintTop_toTopOf=<span class="string">"parent"</span></span><br><span class="line">        app:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        app:layout_constraintWidth_default=<span class="string">"percent"</span></span><br><span class="line">        app:layout_constraintWidth_percent=<span class="string">"0.2"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/beauty"</span></span><br><span class="line">        android:layout_width=<span class="string">"0dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"200dp"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android<span class="selector-class">.support</span><span class="selector-class">.constraint</span><span class="selector-class">.ConstraintLayout</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-d34c0dc2add176ca.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="百分比"><br>可以看到，我们这里先将<code>layout_constraintWidth_default</code>属性设置为<code>percent</code>，接着将<code>layout_constraintWidth_percent</code>设置为<code>0.2</code>，同理，我们可以对<code>layout_constraintHeight_default</code>和<code>layout_constraintHeight_percent</code>进行高度的设置。这里需要注意的是：</p>
+<ul>
+<li>需要先将布局约束之后，才可以进行宽度或者高度的设置，如上述代码，我们先添加了<code>app:layout_constraintTop_toTopOf=&quot;parent&quot;</code>和<code>app:layout_constraintLeft_toLeftOf=&quot;parent&quot;</code>，将<code>ImageView</code>设置在左上角，如果没有先进行控件的约束，会发现我们的设置的百分比这个属性没有起作用。后面的很多属性也是如此，需要先对控件进行约束，才能对我们的控件设置一些属性。<h3 id="4-Ratio"><a href="#4-Ratio" class="headerlink" title="4. Ratio"></a>4. Ratio</h3>在日常工作中，我们会经常遇到将控件比如<code>ImageView</code>设置长:宽=2:1，这个时候怎么办呢？这个时候，小王说了，这个简单啊，如果宽设置为<code>200dp</code>，高就设置为<code>100dp</code>，我只能说，没毛病。同样的功能我们也可以通过<code>Ratio</code>实现，看代码：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;android<span class="selector-class">.support</span><span class="selector-class">.constraint</span><span class="selector-class">.ConstraintLayout</span> xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_beauty"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"0dp"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        app:layout_constraintDimensionRatio=<span class="string">"2:1"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/girl"</span></span><br><span class="line">        app:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        app:layout_constraintTop_toTopOf=<span class="string">"parent"</span> /&gt;</span><br><span class="line">&lt;/android<span class="selector-class">.support</span><span class="selector-class">.constraint</span><span class="selector-class">.ConstraintLayout</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-b46c0cf587119fed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ratio"><br>如果需要按照比例设置控件，这里需要先将<code>layout_width</code>或者<code>layout_height</code>一方设置为<code>0dp</code>，另一个设置为正常比例，接着给<code>layout_constraintDimensionRatio</code>设置比例，例如<code>app:layout_constraintDimensionRatio=&quot;2:1&quot;</code>.</p>
+<h3 id="5-chain"><a href="#5-chain" class="headerlink" title="5. chain"></a>5. chain</h3><p>Chain(约束链)是<code>ConstraintLayout</code>中比较有趣的功能了，我们这次先不看代码，看一下关于约束链的图片，图片来自<a href="https://medium.com/androiddevelopers/introducing-constraint-layout-1-1-d07fc02406bc" target="_blank" rel="noopener">Medium</a>：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-42765eab507b1a6b.gif?imageMogr2/auto-orient/strip" alt="约束链的三种类型">这种动图很好的向我们诠释了约束链的三种类型，分别是<code>spread</code>、<code>spread_inside</code>和<code>packed</code>：</p>
+<ul>
+<li><code>spread</code>：视图均匀分布。</li>
+<li><code>spread_inside</code>：除了约束链的头部和尾部贴在两边的约束上，其余均匀分布。</li>
+<li><code>packed</code>：将视图打包在一起，默认居中。</li>
+</ul>
+<p><strong>第一步 建立约束链</strong><br>什么叫约束链呢，看图：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-36da0244b46d715c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="约束链">形成约束链的条件就是如图两个<code>ImageView</code>分别以对方为约束，我们等会儿看代码。<br><strong>第二步 在第一个控件添加约束链类型</strong><br><code>layout_constraintVertical_chainStyle</code>或者<code>layout_constraintHorizontal_chainStyle</code>添加上面介绍的约束链类型。<br>以<code>spread</code>为例，我们看一下代码：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.<span class="keyword">constraint</span>.ConstraintLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:<span class="keyword">app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 在第一个控件设置chain_style，第一个和最后一个ImageView也要设置</span><br><span class="line">    好约束，上下控件也要互为约束 --&gt;</span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_beauty"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"100dp"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/beauty"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintBottom_toTopOf=<span class="string">"@+id/iv_girl"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintRight_toRightOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintTop_toTopOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintVertical_chainStyle=<span class="string">"spread"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_girl"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"100dp"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/girl"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintBottom_toTopOf=<span class="string">"@+id/iv_biu"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintRight_toRightOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintTop_toBottomOf=<span class="string">"@+id/iv_beauty"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_biu"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"100dp"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/biu"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintBottom_toBottomOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintRight_toRightOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintTop_toBottomOf=<span class="string">"@+id/iv_girl"</span> /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/android.support.<span class="keyword">constraint</span>.ConstraintLayout&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-17496b9b6dc52a49.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="spread效果"><br><code>spread</code>类型的约束链妥妥的完成了，可以根据自己的需求修改约束链类型。</p>
+<h3 id="6-GuideLine"><a href="#6-GuideLine" class="headerlink" title="6. GuideLine"></a>6. GuideLine</h3><p><code>GuideLine</code>只能用在<code>ConstraintLayout</code>布局中，用来辅助布局，不会被显示，通常有横向和纵向之分。<code>GuideLine</code>更多的是使用鼠标操控实现布局，不过，我们就简单的讲解一下使用代码的方式，我们的目标是实现两侧分布的效果，看代码（基于上面的<code>spread</code>效果的代码）：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.<span class="keyword">constraint</span>.ConstraintLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:<span class="keyword">app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_beauty"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"100dp"</span></span><br><span class="line">        android:layout_marginEnd=<span class="string">"8dp"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/beauty"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintBottom_toTopOf=<span class="string">"@+id/iv_girl"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintEnd_toStartOf=<span class="string">"@+id/guideline"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintTop_toTopOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintVertical_chainStyle=<span class="string">"spread"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_girl"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"100dp"</span></span><br><span class="line">        android:layout_marginStart=<span class="string">"8dp"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/girl"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintBottom_toTopOf=<span class="string">"@+id/iv_biu"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintRight_toRightOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintStart_toStartOf=<span class="string">"@+id/guideline"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintTop_toBottomOf=<span class="string">"@+id/iv_beauty"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_biu"</span></span><br><span class="line">        android:layout_width=<span class="string">"200dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"100dp"</span></span><br><span class="line">        android:layout_marginEnd=<span class="string">"8dp"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/biu"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintBottom_toBottomOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintEnd_toStartOf=<span class="string">"@+id/guideline"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintTop_toBottomOf=<span class="string">"@+id/iv_girl"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Guideline可以设置具体的宽度，也可以设置百分比 --&gt;</span><br><span class="line">    &lt;android.support.<span class="keyword">constraint</span>.Guideline</span><br><span class="line">        android:id=<span class="string">"@+id/guideline"</span></span><br><span class="line">        android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">        android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">        android:orientation=<span class="string">"vertical"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintGuide_percent=<span class="string">"0.5"</span> /&gt;</span><br><span class="line">&lt;/android.support.<span class="keyword">constraint</span>.ConstraintLayout&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-c57b1128a4b545a5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Guideline效果">我们这里用的Android studio编辑模式查看的，真实的情况下<code>约束链</code>和<code>Guideline</code>是不会显示的，当<code>Guideline</code>移动的时候以<code>Guideline</code>为约束的控件也会跟着移动。</p>
+<h3 id="7-Barrier"><a href="#7-Barrier" class="headerlink" title="7. Barrier"></a>7. Barrier</h3><p><code>Barrier</code>同<code>Guideline</code>一样，不会被显示，你可以理解为<code>Barrier</code>为我们组成了一个虚拟的视图组，不过它没有视图层级的概念。我们看一下<code>Barrier</code>的使用效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-fe21f14dc464d48f.gif?imageMogr2/auto-orient/strip" alt="Barrier效果">可以看到，中间的线就是我们的<code>Barrier</code>，会随着左侧控件组的最长侧变化而改变<code>Barrier</code>的位置，从而改变右侧控件的位置。同样推荐使用鼠标操控的方式使用<code>Barrier</code>实现布局，这里只是简单的使用：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">android.support.constraint.ConstraintLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"100dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">"@drawable/shape_bg"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/iv_biu"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"80dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"80dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:scaleType</span>=<span class="string">"centerCrop"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:src</span>=<span class="string">"@drawable/biu"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintLeft_toRightOf</span>=<span class="string">"@+id/barrier"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"parent"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- constraint_referenced_ids包含我们需要包含的组件，以这些组件的某一侧为基准 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- barrierDirection面向包含的组件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.constraint.Barrier</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/barrier"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:barrierDirection</span>=<span class="string">"right"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:constraint_referenced_ids</span>=<span class="string">"tv_name,tv_content"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/tv_name"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"Li Lei"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">"20sp"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/tv_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginStart</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"look for bigger world,looking for"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">"16sp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"parent"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">android.support.constraint.ConstraintLayout</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-2c0b012117a3ce7f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Barrier效果"><br>什么情况下会使用<code>Barrier</code>呢？当你使用不可控长度的文本或者自定义的控件的时候，可以考虑使用<code>Barrier</code>。</p>
+<h3 id="8-Circular-positioning"><a href="#8-Circular-positioning" class="headerlink" title="8. Circular positioning"></a>8. Circular positioning</h3><p>什么是<code>Circular positioning</code>呢？我们可以称之为圆形定位，就是以目标控件为圆心，通过设置角度和半径确定我们当前控件的位置，如官方图：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-5e66d03342f5ce55.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Circular positioning">可以说是简单明了了，那么我们来学习一下简单使用：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.<span class="keyword">constraint</span>.ConstraintLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:<span class="keyword">app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_biu"</span></span><br><span class="line">        android:layout_width=<span class="string">"64dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"64dp"</span></span><br><span class="line">        android:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/biu"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintRight_toRightOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintLeft_toLeftOf=<span class="string">"parent"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintBottom_toBottomOf=<span class="string">"parent"</span></span><br><span class="line">        android:layout_marginStart=<span class="string">"10dp"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintTop_toTopOf=<span class="string">"parent"</span> /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ImageView</span><br><span class="line">        android:id=<span class="string">"@+id/iv_girl"</span></span><br><span class="line">        android:layout_width=<span class="string">"64dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"64dp"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintCircle=<span class="string">"@+id/iv_biu"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintCircleRadius=<span class="string">"120dp"</span></span><br><span class="line">        <span class="keyword">app</span>:layout_constraintCircleAngle=<span class="string">"35"</span></span><br><span class="line">        android:src=<span class="string">"@drawable/girl"</span>/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.<span class="keyword">constraint</span>.ConstraintLayout&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-b0d73416b13700f8.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Circular Positioning"></p>
+<p>那么<code>Circular positioning</code>可以做什么呢？可以用来设计比较炫酷的动画或者控件：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-9b04c9d60b693c88.gif?imageMogr2/auto-orient/strip" alt="行星动画"><br>地址：<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2017/1015/8597.html" target="_blank" rel="noopener">ConstraintLayout: Circular Positioning</a><br>如果想查看关于<code>Circular positioning</code>的进阶使用，可以查看我的另一篇博客：</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/7f111f0bdbd0" target="_blank" rel="noopener">妙用ConstraintLayout的Circular positioning</a></p>
+</blockquote>
+<h3 id="9-Group"><a href="#9-Group" class="headerlink" title="9. Group"></a>9. Group</h3><p><code>Group</code>的作用感觉比较鸡肋，通过<code>app:constraint_referenced_ids</code>添加对子View的引用，然后统一的显示或者隐藏控件。这里不再赘述。</p>
+<h2 id="四-总结"><a href="#四-总结" class="headerlink" title="四. 总结"></a>四. 总结</h2><p><code>ConstraintLayout</code>介绍完毕，需要多多使用才能很好的掌握。本人水平有限，难免有误，如有错误，欢迎提出。<br>引用：<br><a href="https://medium.com/androiddevelopers/introducing-constraint-layout-1-1-d07fc02406bc" target="_blank" rel="noopener">Introducing Constraint Layout 1.1</a><br><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2017/1015/8597.html" target="_blank" rel="noopener">ConstraintLayout: Circular Positioning
+</a><a href="https://developer.android.com/reference/android/support/constraint/ConstraintLayout" target="_blank" rel="noopener">官方文档</a></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -237,26 +279,135 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自定义View</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">布局</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2019/03/20/2019-03-20 ConstraintLayout使用指南/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/03/20/2019-03-24 妙用ConstraintLayout的Circular positioning/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          妙用ConstraintLayout的Circular positioning
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/03/11/2019-03-11 Java基础-浅析解决并发的几种方式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java基础-浅析解决并发的几种方式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
 
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
           </div>
         </div>
@@ -278,8 +429,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
