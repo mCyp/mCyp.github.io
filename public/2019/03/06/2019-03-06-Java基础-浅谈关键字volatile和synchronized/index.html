@@ -6,19 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Joe的博客</title>
+  <title>Java基础-浅谈关键字volatile和synchronized关键字 | Joe的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
-<meta name="keywords" content="Android,kotlin,java,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joe的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="前言这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字volatile和 synchronized，如果不了解这些关键字，其实还是挺头疼的。">
+<meta name="keywords" content="Java,并发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础-浅谈关键字volatile和synchronized关键字">
+<meta property="og:url" content="http://yoursite.com/2019/03/06/2019-03-06-Java基础-浅谈关键字volatile和synchronized/index.html">
 <meta property="og:site_name" content="Joe的博客">
-<meta property="og:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta property="og:description" content="前言这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字volatile和 synchronized，如果不了解这些关键字，其实还是挺头疼的。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-a17ec4587f06855e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-5c1ebf954f37c1be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-12T09:45:11.114Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Joe的博客">
-<meta name="twitter:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta name="twitter:title" content="Java基础-浅谈关键字volatile和synchronized关键字">
+<meta name="twitter:description" content="前言这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字volatile和 synchronized，如果不了解这些关键字，其实还是挺头疼的。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9271486-a17ec4587f06855e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -160,99 +164,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-2019-03-11 Java基础-浅析解决并发的几种方式" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+            <article id="post-2019-03-06-Java基础-浅谈关键字volatile和synchronized" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/11/2019-03-11 Java基础-浅析解决并发的几种方式/">Java基础-浅析解决并发的几种方式</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/11/2019-03-11 Java基础-浅析解决并发的几种方式/" class="archive-article-date">
-  	<time datetime="2019-03-11T02:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在上一篇中，我们讨论了Java中的关键字<code>volatile</code>和<code>synchronized</code></p>
-<blockquote>
-<p><a href="https://www.jianshu.com/p/327daf7dff34" target="_blank" rel="noopener">Java基础-浅谈关键字volatile和synchronized</a></p>
-</blockquote>
-<p>那么我们可以再想想，除了<code>synchronized</code>我们还有什么解决并发的方式呢？</p>
-        
-          <a class="article-more-a" href="/2019/03/11/2019-03-11 Java基础-浅析解决并发的几种方式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">并发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/11/2019-03-11 Java基础-浅析解决并发的几种方式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-2019-03-06-Java基础-浅谈关键字volatile和synchronized" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/06/2019-03-06-Java基础-浅谈关键字volatile和synchronized/">Java基础-浅谈关键字volatile和synchronized关键字</a>
+    <h1 class="article-title" itemprop="name">
+      Java基础-浅谈关键字volatile和synchronized关键字
     </h1>
   
 
@@ -266,9 +185,51 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这几天一直在学习Java并发相关的知识（比刚上大学那会儿看好多了，哈~），所以觉得有必要做一些知识总结。当我们在谈到并发或者查看一些开源库的源码的时候，我们会经常看到关键字<code>volatile</code>和 <code>synchronized</code>，如果不了解这些关键字，其实还是挺头疼的。</p>
-        
-          <a class="article-more-a" href="/2019/03/06/2019-03-06-Java基础-浅谈关键字volatile和synchronized/#more">more >></a>
-        
+<a id="more"></a>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="https://upload-images.jianshu.io/upload_images/9271486-a17ec4587f06855e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录"></p>
+<h1 id="一-定义"><a href="#一-定义" class="headerlink" title="一. 定义"></a>一. 定义</h1><p><code>volatile</code>和<code>synchronized</code>是Java中的关键字</p>
+<h1 id="二-作用"><a href="#二-作用" class="headerlink" title="二. 作用"></a>二. 作用</h1><p>我们都知道，Java中某个线程在第一次读取共享属性之前，会从主内存中复制这个属性到线程的工作内存中，之后才会操作这个共享属性，在操作完成之后，如果共享属性的值发生了修改，则会先保存到本地的工作线程，然后才会刷新到主内存（貌似跟作用没什么关系，不过需要理解）。此外，在正式介绍这两个关键字作用之前，我觉得有必要了解三个名词：原子性、可视性和有序性<br>|  名词  | 解释                                                         |<br>| :—-: | ———————————————————— |<br>| 原子性 | <code>一个操作/一系列操作</code>要么全部执行要么都不执行                |<br>| 可视性 | 如果一个线程对一个共享值作出了一些修改，其他线程都可以看到这个共享值的修改。 |<br>| 有序性 | 程序的运行顺序要和程序的逻辑顺序一致，可能实际情况是计算机考虑到性能的因素执行顺序有所不同，但是结果肯定会跟逻辑顺序一致。 |<br>下面来介绍我们今天的主角：<br><strong>1. volatile</strong><br>对于volatile的作用，《Java核心技术卷》是这么说的：</p>
+<blockquote>
+<p>为<code>实例域的访问</code>提供了一种<code>免锁机制</code>，不提供<code>原子性</code>。</p>
+</blockquote>
+<p>首先，<code>实例域</code>说明它是用来修饰域的，如下：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> isNum = <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure></p>
+<p>其次，<code>对实例域的访问提供了免锁机制</code>说明<code>volatile</code>具有<code>可视性</code>；最后的重点就是没有原子性。《Java编程思想》中提到：</p>
+<blockquote>
+<p>所有的基础类型（除了<code>double</code>和<code>long</code>）的基础操作（读取和写入）都具有原子性，经过<code>volatile</code>修饰的<code>long</code>和<code>double</code>在基础操作中也会具有原子性。</p>
+</blockquote>
+<p>所以<code>volatile</code>除了提供可视性之外，还能够为<code>long</code>和<code>double</code>的读取和写入提供原子性，此外，<code>volatile</code>还可以保证有序性。<br><strong>2. synchronized</strong><br>在Java中，所有实例对象都自动含有单一的锁（也称监视器）。所以，当使用<code>synchronized</code>修饰的方法的时候，该方法会自动给实例加锁，这个时候，其他含<code>synchronized</code>的方法必须等到该方法调用结束并释放锁之后，该方法才能够被调用。简单来说，就是同一时间内，只能有一个线程访问 <code>synchronized</code>修饰的方法或者代码块啊，保证了原子性、有序性和可视性。</p>
+<h3 id="三-使用"><a href="#三-使用" class="headerlink" title="三. 使用"></a>三. 使用</h3><p><strong>1. volatile</strong><br><code>volatile</code>的使用比较简单：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对一个域加上volatile，域可以确保可视性和有序性</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> b;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对long和double加上volatile，可以使如下的读取和写入具有原子性。</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">long</span> a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getA</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setA</span><span class="params">(A a)</span></span>&#123; <span class="keyword">this</span>.a = a;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>2. synchronized</strong><br>相对于<code>volatile</code>的使用，<code>synchronzied</code>的使用相对复杂一点：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> b；</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">addOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		a = a + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTwo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">			a = a + <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addThree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (Test.class) &#123;</span><br><span class="line">			b = b + <span class="number">3</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addFour</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		b = b + <span class="number">4</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>根据以上代码，我们看到<code>synchronized</code>的使用通常会分两种类型：</p>
+<ul>
+<li>对象锁，<code>synchronized</code>修饰普通方法或者在代码块中使用的当前对象，分别对应着<code>addOne()</code>和<code>addTwo()</code>方法，该方法采用的是<code>Test</code>的对象锁，只针对单个Test实例的并发问题。</li>
+<li>类锁，<code>synchronized</code>修饰静态方法或者在代码块中使用类对象，分别对应这<code>addFour()</code>和<code>addThree()</code>，这两个方法采用的是<code>Test.Class</code>的对象锁。当存在多个Test实例对象的时候，同一时间只有一个Test实例可以访问到<code>addFour()</code>方法或者<code>addThree()</code>中的代码块。</li>
+</ul>
+<p>值得注意的是，一个任务可以多次获得对象的锁，当在一个<code>synchronized</code>方法中调用同一个对象的另一个<code>synchronized</code>方法，该方法就会使得JYM跟踪的线程的持有的锁的数量加一，方法调用结束的时候，持有锁的数量就会减一，直到数字减为零，锁才会被释放。</p>
+<h3 id="四-进一步探究"><a href="#四-进一步探究" class="headerlink" title="四. 进一步探究"></a>四. 进一步探究</h3><p>在这里，我准备向各位同学浅析一下<code>volatile</code>和<code>synchronized</code>的作用。<br><strong>1.volatile</strong><br>从第二部分中，我们了解到<code>volatile</code>能够保证有序性和可视性以及为<code>double</code>和<code>long</code>的读取和写入操作的原子性，除此之外，不会保证其他操作的原子性。</p>
+<ul>
+<li>有序性：（1）当执行包含volatile的域的读操作或者写操作的时候，在其前面的操作肯定已经全部进行，且结果对后面的操作可见，在其后面的操作肯定还没有进行。（2）Java在进行指令优化的时候，不能把<code>volatile域的操作语句</code>的前面的语句放在后面执行，也不能将其后面的语句放在前面执行。</li>
+<li><p>可视性：关于可视性我们直接引用《Java编程思想》的原文</p>
+<blockquote>
+<p>只要对<code>volatile</code>域产生了写操作，那么所有的读操作都可以看到这个修改。即便使用了本地缓存，情况也确实如此，<code>volatile</code>域会被立即写入主存中，而读取操作就发生在主存中。</p>
+</blockquote>
+</li>
+<li><p>非原子性：在Java中，只有对基本类型（除了<code>long</code>和<code>double</code>，但是<code>long</code>和    <code>double</code>经<code>volatile</code>修饰后读取和写入会具有原子性）的变量的<br>读取和写入才会确保有原子性，并且不包括自增这类跟之前值相关的操作，原因如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAddOne</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  num++;</span><br><span class="line">  <span class="comment">// 自增包括两个步骤：</span></span><br><span class="line">  <span class="comment">// 1. 读取num的值 2. num+1 写入修改后的值</span></span><br><span class="line">  <span class="comment">// 假设线程A在读取num值的时候，被挂起，这个时候线程B读取num的值</span></span><br><span class="line">  <span class="comment">// 线程B对num进行自增，结果为1</span></span><br><span class="line">  <span class="comment">// 这个时候，线程A恢复调度，对起初读取的num的值进行自增，结果也会1</span></span><br><span class="line">  <span class="comment">// 0经过两个自增，结果仍然为1，所以说volatile域并不能保证原子性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>2. synchronized</strong><br>这里，我们就简单的讨论一下<code>synchronized</code>的执行过程吧：<br>（1）获得同步锁。<br>（2）清空工作内存。<br>（3）从主内存中复制数据副本到工作内存。<br>（4）执行代码。<br>（5）刷新数据到主内存。<br>（6）释放锁。<br>这也就是<code>synchronized</code>能够具有可视性、有序性和原子性的原因。</p>
+<h3 id="五-总结"><a href="#五-总结" class="headerlink" title="五. 总结"></a>五. 总结</h3><p><img src="https://upload-images.jianshu.io/upload_images/9271486-5c1ebf954f37c1be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="总结"></p>
+<h3 id="六-拓展"><a href="#六-拓展" class="headerlink" title="六. 拓展"></a>六. 拓展</h3><p>其他解决并发的方式：</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/ce1dc6cfe919" target="_blank" rel="noopener">Java基础-浅析解决并发的几种方式</a></p>
+</blockquote>
+<h3 id="七-引用"><a href="#七-引用" class="headerlink" title="七. 引用"></a>七. 引用</h3><p>本人水平有限，难免会有错误，如有错误，欢迎各位同学指出～<br>如下是本人的参考：</p>
+<ol>
+<li>书籍：《Java核心技术卷》《Java编程思想》</li>
+<li>博客：<br> <a href="https://www.jianshu.com/p/2ed498b43628" target="_blank" rel="noopener">Java：手把手教你全面学习神秘的Synchronized关键字</a><br> <a href="https://www.jianshu.com/p/31e5ab16935f" target="_blank" rel="noopener">Java：鲜为人知的关键字volatile</a><br> <a href="https://segmentfault.com/q/1010000015787014" target="_blank" rel="noopener"> java本地内存什么时候刷新到主内存中去</a></li>
+</ol>
+
       
 
       
@@ -294,407 +255,84 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/06/2019-03-06-Java基础-浅谈关键字volatile和synchronized/">展开全文 >></a>
-        </p>
-      
 
       
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
         
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        
-        
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2019/03/06/2019-03-06-Java基础-浅谈关键字volatile和synchronized/" alt="微信分享二维码">
     </div>
-</aside>
+</div>
 
-
-
-  
-    <article id="post-2019-02-14-带你学习Android图片缓存机制" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/14/2019-02-14-带你学习Android图片缓存机制/">带你学习Android图片缓存机制</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/14/2019-02-14-带你学习Android图片缓存机制/" class="archive-article-date">
-  	<time datetime="2019-02-14T02:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一. 前言"></a>一. 前言</h2><p>我们为什么要学习图片缓存机制？简单来说，就是帮助用户省时省流量。当用户使用<code>RecyclerView</code>或者<code>ListView</code>的时候，频繁的发起网络请求不仅会消耗大量的流量，还会消耗大量的时间，毫无疑问，这会让用户的体验相当糟糕。虽然Glide等图片加载框架已经替我们处理好了图片缓存的问题，但是我们仍然有必要去了解和学习图片缓存机制，知其然才能知其所以然。</p>
-        
-          <a class="article-more-a" href="/2019/02/14/2019-02-14-带你学习Android图片缓存机制/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">缓存</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/14/2019-02-14-带你学习Android图片缓存机制/">展开全文 >></a>
-        </p>
-      
-
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
   
-    <article id="post-2019-01-20-仿掌阅实现书籍打开动画" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/">仿掌阅实现书籍打开动画</a>
-    </h1>
+    <a href="/2019/03/11/2019-03-11 Java基础-浅析解决并发的几种方式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java基础-浅析解决并发的几种方式
+        
+      </div>
+    </a>
   
-
-        
-        <a href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/" class="archive-article-date">
-  	<time datetime="2019-01-20T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://raw.githubusercontent.com/mCyp/Photo/master/%E5%AE%89%E5%8D%93%E6%9C%BA%E5%99%A8%E4%BA%BA.jpg" alt="安卓机器人.png"></p>
-        
-          <a class="article-more-a" href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">动画</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
   
-    <article id="post-2019-01-13-一文读懂Scroller" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+    <a href="/2019/02/14/2019-02-14-带你学习Android图片缓存机制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">带你学习Android图片缓存机制</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/13/2019-01-13-一文读懂Scroller/">一文读懂Scroller</a>
-    </h1>
-  
+</nav>
 
-        
-        <a href="/2019/01/13/2019-01-13-一文读懂Scroller/" class="archive-article-date">
-  	<time datetime="2019-01-13T01:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://raw.githubusercontent.com/mCyp/Photo/master/high-definition-wallpapers-for-android.jpg" alt="2018年学习的知识.png"></p>
-        
-          <a class="article-more-a" href="/2019/01/13/2019-01-13-一文读懂Scroller/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自定义View</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/13/2019-01-13-一文读懂Scroller/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-2018-12-31-新年总结" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/31/2018-12-31-新年总结/">2018年度总结</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/31/2018-12-31-新年总结/" class="archive-article-date">
-  	<time datetime="2018-12-31T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://raw.githubusercontent.com/mCyp/Photo/master/road.jpg" alt="2018年学习的知识.png"></p>
-        
-          <a class="article-more-a" href="/2018/12/31/2018-12-31-新年总结/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/31/2018-12-31-新年总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-2018-12-16-PhotoPagerView" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/16/2018-12-16-PhotoPagerView/">造一个轮子-PhotoPagerView</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/16/2018-12-16-PhotoPagerView/" class="archive-article-date">
-  	<time datetime="2018-12-16T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://raw.githubusercontent.com/mCyp/Photo/master/P81221-175035.jpg" alt="图片.gif"></p>
-        
-          <a class="article-more-a" href="/2018/12/16/2018-12-16-PhotoPagerView/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自定义View</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/16/2018-12-16-PhotoPagerView/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -716,7 +354,27 @@ var _hmt = _hmt || [];
 
   
   
+  
 
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
           </div>
         </div>
@@ -737,8 +395,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
