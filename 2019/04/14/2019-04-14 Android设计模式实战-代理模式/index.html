@@ -6,19 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/2 | Joe的博客</title>
+  <title>Android设计模式实战-代理模式 | Joe的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
-<meta name="keywords" content="Android,kotlin,java,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joe的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/02/index.html">
+  <meta name="description" content="前言设计模式在Android进阶中不可避免，对一个Android工程师来说，学习好设计模式会给我们带来很多好处：  方便阅读和理解Android源码 写出优质的代码，易于拓展和他人阅读  最近在看《Android源码设计模式解析与实战》，一直想深入了解Binder机制，奈何愚笨，读完《Android开发艺术探索》中的第二章节之后仍感觉云里雾里，看见Binder机制使用了代理模式，所以决定先学习代理">
+<meta name="keywords" content="Android,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android设计模式实战-代理模式">
+<meta property="og:url" content="http://yoursite.com/2019/04/14/2019-04-14 Android设计模式实战-代理模式/index.html">
 <meta property="og:site_name" content="Joe的博客">
-<meta property="og:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta property="og:description" content="前言设计模式在Android进阶中不可避免，对一个Android工程师来说，学习好设计模式会给我们带来很多好处：  方便阅读和理解Android源码 写出优质的代码，易于拓展和他人阅读  最近在看《Android源码设计模式解析与实战》，一直想深入了解Binder机制，奈何愚笨，读完《Android开发艺术探索》中的第二章节之后仍感觉云里雾里，看见Binder机制使用了代理模式，所以决定先学习代理">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-9361cd20b9134ac8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-f7717f46ab7249ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-d0b277eefd4c8928.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-ad62f3874a1f731b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-15T12:51:25.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Joe的博客">
-<meta name="twitter:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta name="twitter:title" content="Android设计模式实战-代理模式">
+<meta name="twitter:description" content="前言设计模式在Android进阶中不可避免，对一个Android工程师来说，学习好设计模式会给我们带来很多好处：  方便阅读和理解Android源码 写出优质的代码，易于拓展和他人阅读  最近在看《Android源码设计模式解析与实战》，一直想深入了解Binder机制，奈何愚笨，读完《Android开发艺术探索》中的第二章节之后仍感觉云里雾里，看见Binder机制使用了代理模式，所以决定先学习代理">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9271486-9361cd20b9134ac8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -160,36 +166,72 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2019-04-14 Android设计模式实战-代理模式" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/14/2019-02-14-带你学习Android图片缓存机制/" class="archive-article-date">
-  	<time datetime="2019-02-14T02:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/14/2019-02-14-带你学习Android图片缓存机制/">带你学习Android图片缓存机制</a>
+    <h1 class="article-title" itemprop="name">
+      Android设计模式实战-代理模式
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/14/2019-04-14 Android设计模式实战-代理模式/" class="archive-article-date">
+  	<time datetime="2019-04-14T14:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>设计模式在Android进阶中不可避免，对一个Android工程师来说，学习好设计模式会给我们带来很多好处：</p>
+<ul>
+<li>方便阅读和理解Android源码</li>
+<li>写出优质的代码，易于拓展和他人阅读</li>
+</ul>
+<p>最近在看《Android源码设计模式解析与实战》，一直想深入了解<code>Binder</code>机制，奈何愚笨，读完《Android开发艺术探索》中的第二章节之后仍感觉云里雾里，看见<code>Binder</code>机制使用了代理模式，所以决定先学习代理模式。</p>
+<a id="more"></a>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><img src="https://upload-images.jianshu.io/upload_images/9271486-9361cd20b9134ac8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录"></p>
+<h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>代理模式（Proxy Pattern）也称委托模式，我们引用《Android源码设计模式与实战》中的定义：</p>
+<blockquote>
+<p>为其他对象提供一种代理以控制对这个对象的访问</p>
+<h2 id="二、使用场景"><a href="#二、使用场景" class="headerlink" title="二、使用场景"></a>二、使用场景</h2><h4 id="1-举个栗子"><a href="#1-举个栗子" class="headerlink" title="1. 举个栗子"></a>1. 举个栗子</h4><p>定义好像说的不是那么明白？没关系，我们来举个例子：<br>我们称小王为著名演员，想要去国外，得去买飞机票吧，如果他自己去买票，就会被很多人认出，周围群众就会请求与他合影。为了不让自己暴露在大众面前，就让助理代替他去买票，他的助理就称为他的代理。我们用类图表示一下：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-f7717f46ab7249ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="小王买票"><br>著名演员小王就是这个<code>Actor</code>对象，助理就是<code>Assistant</code>对象，<code>Buyer</code>是我们买票要实现的接口，售票员就是<code>Seller</code>对象，演员的粉丝就是<code>Fans</code>，为了避免粉丝调用小王的合影方法<code>takePhoto()</code>，小王选择让助理代替其去买票，只不过最终还是小王付钱买票罢了。</p>
+<h4 id="2-思考"><a href="#2-思考" class="headerlink" title="2. 思考"></a>2. 思考</h4><p>那么我们来思考一下使用场景：<br>当我们不想让别人直接访问我们的对象（因为这样可能会暴露我们对象，别人可以直接调用我们对象的某些方法，我们不想让别人调用），又或者别人不能直接访问的对象，需要一个代理去接触我们的对象。</p>
+<h2 id="三、代理分类"><a href="#三、代理分类" class="headerlink" title="三、代理分类"></a>三、代理分类</h2><p>如果我们单纯的从code分类，代理模式可以区分为：</p>
+<ul>
+<li>静态代理：上述的类图用代码实现后就是一个典型的静态代理，编译前我们就知道<code>Assistant</code>是我们的代理类，并且已经存在。</li>
+<li>动态代理：动态代理与静态代理相反，编译前我们并不知道谁是我们的代理类，它是通过反射机制实现的，Java给我们提供了便捷的动态代理接口<code>InvocationHandler</code>，具体的使用可以查看<a href="http://www.runoob.com/design-pattern/proxy-pattern.html" target="_blank" rel="noopener">Java动态代理</a>。</li>
+</ul>
+</blockquote>
+<p>那么从适用范围来讲，我们又可以区分为：</p>
+<ul>
+<li>远程代理：为某个对象在不同的地址空间提供局部代理。使系统可以将Server部分隐藏，以便Client不需要考虑Server的存在。</li>
+<li>虚拟代理：使用一个代理对象表示一个十分耗资源的对象，并在真正需要的时候创建。</li>
+<li>保护代理：使用代理控制对原始对象的访问。该类型的代理常被用于原始对象有不同访问权限的情况。</li>
+<li>智能引用：在访问原始对象时执行一些自己的附加操作，并对指向原始对象的引用计数。<h2 id="四、实战"><a href="#四、实战" class="headerlink" title="四、实战"></a>四、实战</h2>学完了代理模式之后，我对我的照片库<a href="https://github.com/mCyp/PhotoPagerView" target="_blank" rel="noopener">PhotoPagerView</a>进行了重构，PhotoPagerView代码并不复杂，只是因为公司的代码日常需要，所以就封装起来，主要功能就是加载多个<code>Bitmap</code>通过<code>ViewPager</code>展示出来。为了好(zhuang)看(bi)，特意选择了QQ主题的图片预览，其实普通主题的代码特别简单，如果单纯的学习代理模式，就不需要看QQ主题的<code>Dialog</code>.<br><img src="https://upload-images.jianshu.io/upload_images/9271486-d0b277eefd4c8928.gif?imageMogr2/auto-orient/strip" alt="qq主题"><h4 id="1-需求"><a href="#1-需求" class="headerlink" title="1. 需求"></a>1. 需求</h4></li>
+<li>显示显示大图的<code>Dialog</code></li>
+<li><code>Dialog</code>暂时分为两种类型：普通类型(<code>NormalPager</code>)和QQ风格类型(<code>QQPager</code>)</li>
+<li>简化操作，不需要让使用者知道这两种具体的实现，只知道有这两种类型即可<h4 id="2-实现"><a href="#2-实现" class="headerlink" title="2. 实现"></a>2. 实现</h4>为了讲解，细节都被省略了，具体可查看代码<br>第一步：创建<code>IPhotoPager</code>的接口<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IPhotoPager</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dismiss</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setConfig</span>(<span class="params">Config config</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        config 构成图片的一些参数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Config</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>第二步：创建基础的<code>BasePager</code>，供<code>QQPager</code>和<code>NormalPager</code>实现，这边只是简单的业务代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BasePager</span> <span class="keyword">extends</span> <span class="title">Dialog</span></span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">ViewPager</span>.<span class="title">OnPageChangeListener</span>,<span class="title">IPhotoPager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> Context mContext;</span><br><span class="line">    <span class="comment">// all base info</span></span><br><span class="line">    <span class="keyword">private</span> IPhotoPager.Config mConfig;</span><br><span class="line"></span><br><span class="line">    ... </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BasePager</span><span class="params">(@NonNull Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(context, R.style.Dialog);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BasePager</span><span class="params">(@NonNull Context context, <span class="keyword">int</span> themeResId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, themeResId);</span><br><span class="line"></span><br><span class="line">        mContext = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setConfig</span><span class="params">(Config config)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mConfig = config;</span><br><span class="line">        initParams();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        init parameter</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initParams</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(bitmaps == <span class="keyword">null</span> || bitmaps.size() == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"bitmaps can't be null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">       ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第三步：实现具体类型的<code>IPhotoPager</code>，<code>QQPager</code>和<code>NormalPager</code>，<code>QQPager</code>加入了更多的效果和弹幕功能，比较复杂，这里不作过多介绍，感兴趣可以看代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NormalPager</span> <span class="keyword">extends</span> <span class="title">BasePager</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String TAG = <span class="string">"NormalPager"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MyViewPager mPhotoPager; <span class="comment">// 继承自ViewPager，仅仅捕获异常</span></span><br><span class="line">    <span class="keyword">private</span> ImageView mDelete;</span><br><span class="line">    <span class="keyword">private</span> TextView mPosition;</span><br><span class="line">    <span class="keyword">private</span> ImageView mBack;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> PhotoPagerAdapter mAdapter;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NormalPager</span><span class="params">(@NonNull Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NormalPager</span><span class="params">(@NonNull Context context, <span class="keyword">int</span> themeResId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, themeResId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">        View root = LayoutInflater.from(mContext).inflate(R.layout.layout_normal_pager, <span class="keyword">null</span>);</span><br><span class="line">        setContentView(root);</span><br><span class="line">        initWidget(root);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWidget</span><span class="params">(View root)</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// 初始化布局</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (v.getId() == R.id.iv_back) &#123;</span><br><span class="line">            dismiss();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            deleteCurrentPosition();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">deleteCurrentPosition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 省略具体实现 删除当前部分触发</span></span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> position, <span class="keyword">float</span> positionOffset, <span class="keyword">int</span> positionOffsetPixels)</span> </span>&#123;</span><br><span class="line">        Log.e(TAG,<span class="string">"pos:"</span>+position+<span class="string">",offset:"</span>+positionOffset);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageSelected</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        mPosition.setText(String.format(Locale.getDefault(), <span class="string">"%d/%d"</span>, position + <span class="number">1</span>, bitmaps.size()));</span><br><span class="line">        curPosition = position;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第四步：设置代理，通过类型创建不同主题的<code>Pager</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhotoPagerViewProxy</span> <span class="keyword">implements</span> <span class="title">IPhotoPager</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TYPE_NORMAL = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TYPE_QQ = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TYPE_WE_CHAT = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ANIMATION_SCALE_ALPHA = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ANIMATION_TRANSLATION = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> IPhotoPager photoPageView;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">PhotoPagerViewProxy</span><span class="params">(Context context, <span class="keyword">int</span> type, Config config)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">            <span class="keyword">case</span> TYPE_QQ:</span><br><span class="line">                photoPageView = <span class="keyword">new</span> QQPager(context,R.style.Dialog);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> TYPE_WE_CHAT:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                photoPageView = <span class="keyword">new</span> NormalPager(context, R.style.Dialog);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        setConfig(config);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        photoPageView.show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dismiss</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        photoPageView.dismiss();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setConfig</span><span class="params">(Config config)</span> </span>&#123;</span><br><span class="line">        photoPageView.setConfig(config);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Activity context;</span><br><span class="line">        <span class="keyword">private</span> IPhotoPager.Config config;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> type;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">(Activity context, <span class="keyword">int</span> type)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.context = context;</span><br><span class="line">            <span class="keyword">this</span>.config = <span class="keyword">new</span> IPhotoPager.Config();</span><br><span class="line">            <span class="keyword">this</span>.type = type;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">(Activity context)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// default type is TYPE_NORMAL</span></span><br><span class="line">            <span class="keyword">this</span>(context, TYPE_NORMAL);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">       ... <span class="comment">// 具体设置参数都省略</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> PhotoPagerViewProxy <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> PhotoPagerViewProxy(context, type, config);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>大功告成，具体代码地址：<a href="https://github.com/mCyp/PhotoPagerView" target="_blank" rel="noopener">PhotoPagerView</a></p>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p><img src="https://upload-images.jianshu.io/upload_images/9271486-ad62f3874a1f731b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="总结"><br>本人水品有限，难免有误，如有错误，欢迎指出。<br>Over~<br>引用：</p>
+<blockquote>
+<p>《Android源码设计模式》<br><a href="http://www.runoob.com/design-pattern/proxy-pattern.html" target="_blank" rel="noopener">《代理模式》</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,26 +241,126 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">缓存</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2019/04/14/2019-04-14 Android设计模式实战-代理模式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/03/31/2019-03-31 随笔—看樱花/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">随笔—看樱花</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
 
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
           </div>
         </div>
@@ -240,8 +382,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
