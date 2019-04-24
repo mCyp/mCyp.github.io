@@ -6,19 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Joe的博客</title>
+  <title>教你写一个弹幕库，确定不了解一下？ | Joe的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
-<meta name="keywords" content="Android,kotlin,java,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joe的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/page/2/index.html">
+  <meta name="description" content="前言最近刚写完了一个弹幕库Muti-Barrage，它具有如下功能：  自定义多视图（弹幕必备） 碰撞检测 检测触摸事件 设置发送间隔 设置速度生成区间 循环播放">
+<meta name="keywords" content="Android,自定义View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="教你写一个弹幕库，确定不了解一下？">
+<meta property="og:url" content="http://yoursite.com/2019/04/21/2019-04-21 教你写一个弹幕库，确定不了解一下">
 <meta property="og:site_name" content="Joe的博客">
-<meta property="og:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta property="og:description" content="前言最近刚写完了一个弹幕库Muti-Barrage，它具有如下功能：  自定义多视图（弹幕必备） 碰撞检测 检测触摸事件 设置发送间隔 设置速度生成区间 循环播放">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-081c13b841038755.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-bc4bdbbe5bdd142c.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-106e727e66a81e15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9271486-2763a650775a7ce2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-24T14:45:01.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Joe的博客">
-<meta name="twitter:description" content="江苏大学18级，就职于无锡Orient。擅长Android，深入研究移动端开发。">
+<meta name="twitter:title" content="教你写一个弹幕库，确定不了解一下？">
+<meta name="twitter:description" content="前言最近刚写完了一个弹幕库Muti-Barrage，它具有如下功能：  自定义多视图（弹幕必备） 碰撞检测 检测触摸事件 设置发送间隔 设置速度生成区间 循环播放">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9271486-081c13b841038755.gif?imageMogr2/auto-orient/strip">
   
   
     <link rel="icon" href="/assets/blogImg/favicon.ico">
@@ -160,36 +166,96 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2019-04-21 教你写一个弹幕库，确定不了解一下?" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/" class="archive-article-date">
-  	<time datetime="2019-01-20T00:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/20/2019-01-20-仿掌阅实现书籍打开动画/">仿掌阅实现书籍打开动画</a>
+    <h1 class="article-title" itemprop="name">
+      教你写一个弹幕库，确定不了解一下？
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/21/2019-04-21 教你写一个弹幕库，确定不了解一下?/" class="archive-article-date">
+  	<time datetime="2019-04-21T14:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近刚写完了一个弹幕库<a href="https://github.com/mCyp/Muti-Barrage" target="_blank" rel="noopener">Muti-Barrage</a>，它具有如下功能：</p>
+<ul>
+<li>自定义多视图（弹幕必备）</li>
+<li>碰撞检测</li>
+<li>检测触摸事件</li>
+<li>设置发送间隔</li>
+<li>设置速度生成区间</li>
+<li>循环播放</li>
+</ul>
+<a id="more"></a>
+<p>花费了不少闲暇的时间，故打算在此总结一下。老规矩，在写下文之前，我们先看一下效果：<br><strong>单视图弹幕应用</strong><br><img src="https://upload-images.jianshu.io/upload_images/9271486-081c13b841038755.gif?imageMogr2/auto-orient/strip" alt="单弹幕视图"><br><strong>多视图弹幕例子</strong><br><img src="https://upload-images.jianshu.io/upload_images/9271486-bc4bdbbe5bdd142c.gif?imageMogr2/auto-orient/strip" alt="多视图弹幕"></p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><img src="https://upload-images.jianshu.io/upload_images/9271486-106e727e66a81e15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录"></p>
+<h2 id="一、会遇到的坑"><a href="#一、会遇到的坑" class="headerlink" title="一、会遇到的坑"></a>一、会遇到的坑</h2><ul>
+<li>多视图如何处理</li>
+<li>如何防碰撞</li>
+<li>触摸事件如何检测<h2 id="二、总体一览"><a href="#二、总体一览" class="headerlink" title="二、总体一览"></a>二、总体一览</h2>我们先看一下弹幕的产生过程：<br><img src="https://upload-images.jianshu.io/upload_images/9271486-2763a650775a7ce2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="产生过程"></li>
+</ul>
+<p>整体并不难，<code>BarrageAdapter</code>负责管理数据，<code>BarrageView</code>负责管理视图，数据被加入<code>BarrageAdapter</code>后，单线程的线程池控制子View的产生速度，定时发送消息给<code>BarrageAdapterHandler</code>，生成弹幕的子View之后经过一些列操作添加进<code>BarrageView</code>中</p>
+<h2 id="三、代码细节"><a href="#三、代码细节" class="headerlink" title="三、代码细节"></a>三、代码细节</h2><p>这里，我不会把整段代码都贴上，而是根据弹幕产生过程逐步展开。</p>
+<h4 id="1-数据定义"><a href="#1-数据定义" class="headerlink" title="1.数据定义"></a>1.数据定义</h4><p>所有弹幕的数据都必须实现<code>DataSource</code>接口，<code>getType()</code>方法可以帮我们确定视图的布局。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">DataSource</span> &#123;</span><br><span class="line">    <span class="comment">// 返回当前的类型</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getType</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="comment">// 返回生成的时间</span></span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="title">getShowTime</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-定义IBarrageView接口"><a href="#2-定义IBarrageView接口" class="headerlink" title="2.定义IBarrageView接口"></a>2.定义<code>IBarrageView</code>接口</h4><p><code>BarrageView</code>需要实现的方法，让<code>BarrageAdapter</code>调用<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IBarrageView</span> &#123;</span><br><span class="line">    <span class="comment">// 添加视图</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addBarrageItem</span>(<span class="params">View view</span>)</span>;</span><br><span class="line">    <span class="comment">// 获取是否存在缓存</span></span><br><span class="line">    <span class="function">View <span class="title">getCacheView</span>(<span class="params"><span class="keyword">int</span> type</span>)</span>;</span><br><span class="line">    <span class="comment">// 发送View间隔</span></span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="title">getInterval</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="comment">// 循环的次数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getRepeat</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-数据添加"><a href="#3-数据添加" class="headerlink" title="3.数据添加"></a>3.数据添加</h4><p>为了约束数据类型，我们需要在<code>BarrageAdapter</code>使用范型，也就是<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BarrageAdapter&lt;T</span> <span class="keyword">extends</span> <span class="title">DataSource&gt;</span></span></span><br><span class="line"><span class="class">        <span class="title">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面我们从数据的添加入口讲起：<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 添加一组数据</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * @param dataList 一组数据</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">public void addList(List&lt;T&gt; <span class="built_in">dataList</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">dataList</span> == <span class="built_in">null</span> || <span class="built_in">dataList</span>.size() == <span class="number">0</span>)</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">      int len = <span class="built_in">dataList</span>.size();</span><br><span class="line">      mDataList.addAll(<span class="built_in">dataList</span>);</span><br><span class="line">      mService.submit(<span class="keyword">new</span> DelayRunnable(len));</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>mDataList</code>是我们存放数据的<code>List</code>，数据添加好之后，线程池会执行我们的任务<code>DelayRunnable</code>，<code>DelayRunnable</code>是什么呢？看代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 延迟的Runnable</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DelayRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> len;</span><br><span class="line"></span><br><span class="line">    DelayRunnable(<span class="keyword">int</span> len) &#123;</span><br><span class="line">        <span class="keyword">this</span>.len = len;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (repeat != -<span class="number">1</span> &amp;&amp; repeat &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; repeat; j++) &#123;</span><br><span class="line">                sendMsg(len);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (repeat == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!isDestroy.get()) &#123;</span><br><span class="line">                sendMsg(len);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sendMsg</span><span class="params">(<span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        Message msg = <span class="keyword">new</span> Message();</span><br><span class="line">        msg.what = MSG_CREATE_VIEW;</span><br><span class="line">        msg.obj = i;</span><br><span class="line">        mHandler.sendMessage(msg);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(interval * <span class="number">20</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，<code>DelayRunnable</code>实现了<code>Runnable</code>接口，<code>run()</code>方法主要控制弹幕的循环次数，<code>sendMsg(int len)</code>中不断发送消息给<code>mHandler</code>，其中循环次数<code>repeat</code>和发送消息的间隔<code>interval</code>都是<code>IBarrageView</code>提供的，而<code>mHandler</code>就是生产过程中有的<code>BarrageAdapterHandler</code>，主要负责子View的生成。</p>
+<h4 id="4-子View的生成"><a href="#4-子View的生成" class="headerlink" title="4.子View的生成"></a>4.子View的生成</h4><p>我们将<code>BarrageAdapterHandler</code>设置成静态类。从数据变成<code>BarrageView</code>子View的过程直接在下面的代码体现了出来：<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public static <span class="class"><span class="keyword">class</span> <span class="title">BarrageAdapterHandler&lt;T</span> <span class="keyword">extends</span> <span class="title">DataSource&gt;</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="type">WeakReference</span>&lt;<span class="type">BarrageAdapter</span>&gt; adapterReference;</span><br><span class="line"></span><br><span class="line">        <span class="type">BarrageAdapterHandler</span>(<span class="type">Looper</span> looper, <span class="type">BarrageAdapter</span> adapter) &#123;</span><br><span class="line">            <span class="keyword">super</span>(looper);</span><br><span class="line">            adapterReference = <span class="keyword">new</span> <span class="type">WeakReference</span>&lt;&gt;(adapter);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        public void handleMessage(<span class="type">Message</span> msg) &#123;</span><br><span class="line">            <span class="keyword">super</span>.handleMessage(msg);</span><br><span class="line"></span><br><span class="line">            switch (msg.what) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="type">MSG_CREATE_VIEW</span>: &#123;</span><br><span class="line">                    int pos = (int) msg.obj;</span><br><span class="line">                    <span class="type">T</span> data = (<span class="type">T</span>) adapterReference.get().mDataList.get(pos);</span><br><span class="line">                    <span class="keyword">if</span> (data == <span class="literal">null</span>)</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">if</span> (adapterReference.get().barrageView == <span class="literal">null</span>)</span><br><span class="line">                        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">RuntimeException</span>(<span class="string">"please set barrageView,barrageView can't be null"</span>);</span><br><span class="line">                    <span class="comment">// get from cache</span></span><br><span class="line">                    <span class="type">View</span> cacheView = adapterReference.get().barrageView.getCacheView(data.getType());</span><br><span class="line">                    adapterReference.get().createItemView(data, cacheView);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>先获取<code>msg.obj</code>中的序号，从而从<code>mDataList</code>中取出具体数据，接着从<code>IBarrageView</code>中的<code>getCacheView(data.getType())</code>获取缓存视图，我们先抛开<code>BarrageAdapter</code>，从<code>BarrageView</code>中继续挖掘，在<code>BarrageView</code>中，我们利用<code>SparseArray&lt;LinkedList&lt;View&gt;&gt;</code>进行缓存弹幕子View的管理，根据不同的<code>DataSource</code>中的<code>type</code>，将缓存弹幕子View存进不同的<code>LinkedList&lt;View&gt;</code>中，我们需要缓存弹幕子View的时候直接从<code>SparseArray&lt;LinkedList&lt;View&gt;&gt;</code>里面取出一个子View。现在可以回到<code>BarrageAdapter</code>了，我们来看<code>createItemView(data, cacheView)</code>方法，这里就很像我们平时对<code>RecyclerView</code>中<code>RecyclerAdapter</code>的封装了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建子视图的过程</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> cacheView 缓存视图</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createItemView</span><span class="params">(T data, View cacheView)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1.获取子布局</span></span><br><span class="line">    <span class="comment">// 2. 创建ViewHolder</span></span><br><span class="line">    <span class="comment">// 3. 绑定ViewHolder</span></span><br><span class="line">    <span class="comment">// 4. 返回视图</span></span><br><span class="line">    <span class="keyword">int</span> layoutType = getItemLayout(data);</span><br><span class="line">    BarrageViewHolder&lt;T&gt; holder = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (cacheView != <span class="keyword">null</span>) &#123;</span><br><span class="line">        holder = (BarrageViewHolder&lt;T&gt;) cacheView.getTag(R.id.barrage_view_holder);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == holder) &#123;</span><br><span class="line">        holder = createViewHolder(mContext, layoutType);</span><br><span class="line">        mTypeList.add(data.getType());</span><br><span class="line">    &#125;</span><br><span class="line">    bindViewHolder(holder, data);</span><br><span class="line">    <span class="keyword">if</span> (barrageView != <span class="keyword">null</span>)</span><br><span class="line">        barrageView.addBarrageItem(holder.getItemView());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建ViewHolder</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> type 布局类型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> ViewHolder</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> BarrageViewHolder&lt;T&gt; <span class="title">createViewHolder</span><span class="params">(Context context, <span class="keyword">int</span> type)</span> </span>&#123;</span><br><span class="line">    View root = LayoutInflater.from(context).inflate(type, <span class="keyword">null</span>);</span><br><span class="line">    BarrageViewHolder&lt;T&gt; holder = onCreateViewHolder(root, type);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置点击事件</span></span><br><span class="line">    root.setTag(R.id.barrage_view_holder, holder);</span><br><span class="line">    root.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">return</span> holder;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BarrageViewHolder</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> T mData;</span><br><span class="line">    <span class="keyword">private</span> View itemView;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BarrageViewHolder</span><span class="params">(View itemView)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.itemView = itemView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getItemView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> itemView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">bind</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">        mData = data;</span><br><span class="line">        onBind(data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">onBind</span><span class="params">(T data)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在子View的生成过程中:</p>
+<ul>
+<li>先获取子布局文件，<code>getItemLayout(T t)</code>是抽象方法，主要根据不同的数据类型确定不同的布局文件。</li>
+<li>接着判断缓存View<code>cacheView</code>是否为空，不为空则利用<code>getTag(R.id.barrage_view_holder)</code>方法获取缓存View中绑定的<code>BarrageViewHolder</code>。</li>
+<li><code>holder</code>即<code>BarrageViewHolder</code>为空的情况下就重新创建弹幕的子View，这里我们可以从<code>createViewHolder(mContext, layoutType)</code>中得处结论，子View就是在这里根据不同的布局文件创建的，<code>Tag</code>和弹幕的触摸事件的设置也是在这里设置的，这也就解决了上面的两个问题，<strong>如何设置多视图</strong>和<strong>触摸事件的检测</strong>。</li>
+<li><code>bindViewHolder(holder, data);</code>将<code>holder</code>和具体的数据进行绑定。最终调用<code>BarrageViewHolder</code>中的抽象<code>onBind(T data)</code>方法，从而进行UI的设置。</li>
+<li>最后，<code>IBarrageView</code>将子弹幕子View添加进去。<h4 id="5-BarrageView对子View的处理"><a href="#5-BarrageView对子View的处理" class="headerlink" title="5.BarrageView对子View的处理"></a>5.<code>BarrageView</code>对子View的处理</h4>子View添加来之后，<code>BarrageView</code>会对子View进行高度和宽度的测量，测量完之后进行最佳弹幕航道的选择和速度的设置，最后进行属性动画的创建，我们逐个分析。<h5 id="宽度和高度的设置"><a href="#宽度和高度的设置" class="headerlink" title="宽度和高度的设置"></a>宽度和高度的设置</h5><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">addBarrageItem</span><span class="params">(<span class="keyword">final</span> View view)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 获取高度和宽度</span></span><br><span class="line">    <span class="keyword">int</span> w = View.MeasureSpec.makeMeasureSpec(<span class="number">0</span>, MeasureSpec.UNSPECIFIED);</span><br><span class="line">    <span class="keyword">int</span> h = View.MeasureSpec.makeMeasureSpec(<span class="number">0</span>, MeasureSpec.UNSPECIFIED);</span><br><span class="line">    view.measure(w, h);</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> itemWidth = view.getMeasuredWidth();</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> itemHeight = view.getMeasuredHeight();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (singleLineHeight == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="comment">// 如果没有设置高度 启用添加的第一个Item作为行数</span></span><br><span class="line">        <span class="comment">// 建议使用最小的Item的高度</span></span><br><span class="line">        singleLineHeight = itemHeight;</span><br><span class="line">        initBarrageListAndSpeedArray();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 先省略后面代码</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 初始化一个空的弹幕列表和速度列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">initBarrageListAndSpeedArray</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    barrageDistance = DeviceUtils.dp2px(getContext(), <span class="number">12</span>);</span><br><span class="line">    barrageLines = height / (singleLineHeight + barrageDistance);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; barrageLines; i++) &#123;</span><br><span class="line">        barrageList.add(i, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    speedArray = <span class="keyword">new</span> <span class="keyword">int</span>[barrageLines];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; barrageLines; i++) &#123;</span><br><span class="line">        speedArray[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在上面代码中，我们获取了子View的高度和宽度，如果是第一次添加子View，同时用户也没有对弹幕的高度进行设置，这个时候只能由<code>BarrageView</code>自身进行<br><code>barrageList</code>和<code>speedArray</code>进行初始化，<code>barrageList</code>是<code>List&lt;View&gt;</code>，用来管理每个弹幕航道最新弹幕的子View，<code>speedArray</code>是<code>int[]</code>，则用于管理最新弹幕子View的速度，他们可以用来干嘛，这里先卖个关子。</p>
+<h5 id="获取最佳弹幕航道"><a href="#获取最佳弹幕航道" class="headerlink" title="获取最佳弹幕航道"></a>获取最佳弹幕航道</h5><p>获取最佳航道的代码比较多，这里就不写了，首先会根据弹幕的布局（可以将弹幕放在顶部、中间、底部和全屏）进行行数的过滤，接着从<code>barrageList</code>获取每一行的子View从而获取<code>getX()</code>，最终得出哪一行剩余的空间大，你可能会有疑问，当前航道没有子View呢？这种情况就简单了，直接返回该航道啊。</p>
+<h5 id="获取速度"><a href="#获取速度" class="headerlink" title="获取速度"></a>获取速度</h5><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取速度</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param line 最佳弹道</span></span><br><span class="line"><span class="comment"> * @param itemWidth 子View的宽度</span></span><br><span class="line"><span class="comment"> * @return 速度</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="built_in">int</span> getSpeed(<span class="built_in">int</span> <span class="built_in">line</span>, <span class="built_in">int</span> itemWidth) &#123;</span><br><span class="line">    <span class="keyword">if</span> (model == MODEL_RANDOM) &#123;</span><br><span class="line">        <span class="keyword">return</span> speed - speedWaveValue + <span class="built_in">random</span>.nextInt(<span class="number">2</span> * speedWaveValue);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">int</span> lastSpeed = speedArray[<span class="built_in">line</span>];</span><br><span class="line">        View view = barrageList.<span class="built_in">get</span>(<span class="built_in">line</span>);</span><br><span class="line">        <span class="built_in">int</span> curSpeed;</span><br><span class="line">        <span class="keyword">if</span> (view == <span class="keyword">null</span>) &#123;</span><br><span class="line">            curSpeed = speed - speedWaveValue + <span class="built_in">random</span>.nextInt(<span class="number">2</span> * speedWaveValue);</span><br><span class="line">            Log.e(TAG, <span class="string">"View:null"</span> + <span class="string">",line:"</span> + <span class="built_in">line</span> + <span class="string">",speed:"</span> + curSpeed);</span><br><span class="line">            <span class="comment">// 如果当前为空 随机生成一个滑动时间</span></span><br><span class="line">            <span class="keyword">return</span> curSpeed;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">int</span> slideLength = (<span class="built_in">int</span>) (<span class="built_in">width</span> - view.getX());</span><br><span class="line">        <span class="keyword">if</span> (view.getWidth() &gt; slideLength) &#123;</span><br><span class="line">            <span class="comment">// 数据密集的时候跟上面的时间间隔相同</span></span><br><span class="line">            Log.e(TAG, <span class="string">"View:------"</span> + <span class="string">",line:"</span> + <span class="built_in">line</span> + <span class="string">",speed:"</span> + lastSpeed);</span><br><span class="line">            <span class="keyword">return</span> lastSpeed;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 得到上个View剩下的滑动时间</span></span><br><span class="line">        <span class="built_in">int</span> lastLeavedSlidingTime = (<span class="built_in">int</span>) ((view.getX() + view.getWidth() ) / (<span class="built_in">float</span>) lastSpeed)+<span class="number">1</span>;</span><br><span class="line">        <span class="comment">//Log.e(TAG,"lastLeavedSlidingTime:"+lastLeavedSlidingTime+",lastLeavedSlidingTime:"+);</span></span><br><span class="line">        <span class="built_in">int</span> fastestSpeed = (<span class="built_in">width</span>) / lastLeavedSlidingTime;</span><br><span class="line">        fastestSpeed = Math.<span class="built_in">min</span>(fastestSpeed, speed + speedWaveValue);</span><br><span class="line">        <span class="keyword">if</span> (fastestSpeed &lt;= speed - speedWaveValue) &#123;</span><br><span class="line">            curSpeed = speed - speedWaveValue;</span><br><span class="line">        &#125; <span class="keyword">else</span></span><br><span class="line">            curSpeed = speed - speedWaveValue + <span class="built_in">random</span>.nextInt(fastestSpeed - (speed - speedWaveValue));</span><br><span class="line">        Log.e(TAG, <span class="string">"view:"</span> + view.getX() + <span class="string">",lastLeavedSlidingTime:"</span> + lastLeavedSlidingTime + <span class="string">",line:"</span> + <span class="built_in">line</span> + <span class="string">",speed:"</span> + curSpeed);</span><br><span class="line">        <span class="keyword">return</span> curSpeed;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>speed</code>和<code>speedWaveValue</code>分别是速度初始值和速度波动值，<code>[speed-speedWaveValue,speed+speedWaveValue]</code>代表弹幕的速度区间。这里<code>BarrageView</code>会先判断当前弹幕的模式，如果是<code>MODEL_RANDOM</code>模式，我们直接随机生成弹幕速度就好了，不过需要在速度区间中生成；如果是防碰撞模式，我们需要：</p>
+<ul>
+<li>通过我们上面提到的<code>barrageList</code>和<code>speedArray</code>分别获取之前该航道前一个子View和其速度。</li>
+<li>如果前子View为空，跟随机模式生成速度的规则一样。</li>
+<li>如果前子View不为空，我们需要获取前子View已经滑动的距离，并且根据它的速度计算剩下滑动的时间，用剩下滑动时间下我们计算当前子View在不碰撞的前提下能够设置最快的速度，计算好之后再在用户设置的速度区间和不超过最快速度的前提下随机生成一个速度。</li>
+</ul>
+<p>当然，这并不是绝对的，如果弹幕生成间隔设置不理想的情况下，较短的时间内会产生大量的子View，肯定会发生碰撞的，这个时候我们就直接设置前一个子View的速度。</p>
+<h5 id="弹幕滑动"><a href="#弹幕滑动" class="headerlink" title="弹幕滑动"></a>弹幕滑动</h5><p>这个我们利用属性动画完成即可：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> addBarrageItem(<span class="keyword">final</span> View view) &#123;</span><br><span class="line">    <span class="comment">// 省略前面代码</span></span><br><span class="line">    <span class="comment">// 生成动画</span></span><br><span class="line">    <span class="keyword">final</span> ValueAnimator valueAnimator = ValueAnimator.ofInt(<span class="built_in">width</span>, -itemWidth);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取最佳的行数</span></span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">int</span> <span class="built_in">line</span> = getBestLine(itemHeight);</span><br><span class="line">    <span class="built_in">int</span> curSpeed = getSpeed(<span class="built_in">line</span>, itemWidth);</span><br><span class="line">    <span class="keyword">long</span> duration = (<span class="built_in">int</span>)((<span class="built_in">float</span>)(<span class="built_in">width</span>+itemWidth)/(<span class="built_in">float</span>)curSpeed+<span class="number">1</span>) * <span class="number">1000</span>;</span><br><span class="line">    Log.i(TAG,<span class="string">"duration:"</span>+duration);</span><br><span class="line">    valueAnimator.setDuration(duration);</span><br><span class="line">    valueAnimator.setInterpolator(<span class="keyword">new</span> LinearInterpolator());</span><br><span class="line">    valueAnimator.addUpdateListener(<span class="keyword">new</span> ValueAnimator.AnimatorUpdateListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> onAnimationUpdate(ValueAnimator animation) &#123;</span><br><span class="line">            <span class="built_in">int</span> value = (<span class="built_in">int</span>) animation.getAnimatedValue();</span><br><span class="line">            <span class="comment">//Log.e(TAG, "value:" + value);</span></span><br><span class="line">            <span class="keyword">if</span>(cancel)&#123;</span><br><span class="line">                valueAnimator.cancel();</span><br><span class="line">                BarrageView.<span class="keyword">this</span>.removeView(view);</span><br><span class="line">            &#125;</span><br><span class="line">            view.layout(value, <span class="built_in">line</span> * (singleLineHeight + barrageDistance) + barrageDistance / <span class="number">2</span>, value + itemWidth, <span class="built_in">line</span> * (singleLineHeight + barrageDistance) + barrageDistance / <span class="number">2</span> + itemHeight);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    valueAnimator.addListener(<span class="keyword">new</span> SimpleAnimationListener() &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> onAnimationEnd(Animator animation) &#123;</span><br><span class="line">            <span class="keyword">super</span>.onAnimationEnd(animation);</span><br><span class="line"></span><br><span class="line">            BarrageView.<span class="keyword">this</span>.removeView(view);</span><br><span class="line">            BarrageAdapter.BarrageViewHolder holder = (BarrageAdapter.BarrageViewHolder) view.getTag(R.id.barrage_view_holder);</span><br><span class="line">            DataSource d = (DataSource) holder.mData;</span><br><span class="line">            <span class="built_in">int</span> type = d.getType();</span><br><span class="line">            addViewToCaches(type, view);</span><br><span class="line">            <span class="comment">// 通知内存添加缓存</span></span><br><span class="line">            mHandler.sendEmptyMessage(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    addView(view);</span><br><span class="line">    speedArray[<span class="built_in">line</span>] = curSpeed;</span><br><span class="line">    <span class="comment">// 因为使用缓存View，必须重置位置</span></span><br><span class="line">    view.layout(<span class="built_in">width</span>, <span class="built_in">line</span> * (singleLineHeight + barrageDistance) + barrageDistance / <span class="number">2</span>, <span class="built_in">width</span> + itemWidth, <span class="built_in">line</span> * (singleLineHeight + barrageDistance) + barrageDistance / <span class="number">2</span> + itemHeight);</span><br><span class="line">    barrageList.<span class="built_in">set</span>(<span class="built_in">line</span>, view);</span><br><span class="line">    valueAnimator.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里就比较简单了，当前速度获取以后，直接利用当前屏幕宽度加子View宽度除以当前速度计算弹幕子View执行属性动画的时间。这里需要注意的是：</p>
+<ul>
+<li>动画执行结束或者<code>BarrageView</code>销毁的时候，需要将当前子View从<code>BarrageView</code>中移除。</li>
+<li>动画执行结束的时候，当前View被移除后会被添加到缓存，之后执行<code>mHandler.sendEmptyMessage(0)</code>，在<code>mHandler</code>中，如果缓存View过多的时候就会清理缓存，这里的细节不会过多描述，具体的可以看代码。</li>
+</ul>
+<p>到这儿，我们<code>BarrageView</code>对子View的处理就结束了～</p>
+<h4 id="6-一些细节"><a href="#6-一些细节" class="headerlink" title="6.一些细节"></a>6.一些细节</h4><ul>
+<li>内存泄漏的处理：涉及到<code>Handler</code>的情况，这里都是采用创建静态内部类和弱引用，以及在<code>destroy</code>方法中对<code>Handler</code>进行处理的方法。</li>
+<li>事件下发：如果用户希望<code>BarrageView</code>仅仅是显示，不希望影响到<code>BarrageView</code>重叠区域下方控件触摸事件的下发，需要在<code>onInterceptTouchEvent</code>阻止事件的下发，需要用户对<code>isInterceptTouchEvent</code>字段进行手动设置。</li>
+</ul>
+<p>其他的一些细节可以查看具体的代码。</p>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><p>本文涉及到了Android中属性动画、内存泄漏以及Java中范型和线程池等知识的简单运用，算是对去年学习的知识一些实战吧。当然了，本人对知识的理解难免有误差，如有错误，欢迎指出，如果觉得我的库写的不错，可以给个Star呦～</p>
+<blockquote>
+<p>Muti-Barrage:<a href="https://github.com/mCyp/Muti-Barrage" target="_blank" rel="noopener">https://github.com/mCyp/Muti-Barrage</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,72 +265,126 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">动画</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/13/2019-01-13-一文读懂Scroller/" class="archive-article-date">
-  	<time datetime="2019-01-13T01:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/13/2019-01-13-一文读懂Scroller/">一文读懂Scroller</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">自定义View</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2019/04/21/2019-04-21 教你写一个弹幕库，确定不了解一下" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/04/14/2019-04-14 Android设计模式实战-代理模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android设计模式实战-代理模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
           </div>
         </div>
@@ -286,8 +406,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
